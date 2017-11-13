@@ -1,0 +1,19 @@
+{
+  "name": "edb-importer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run-script build",
+    "test": "./node_modules/.bin/cucumber.js",
+    "build": "cp ./src/importer.js ./index.js && cp ./src/importer.js ./browser.js && sed -i 's/exports/window/g' browser.js"
+  },
+  "devDependencies": {
+    "cucumber": "^3"
+  },
+  "author": "franko <code@akr.club> (http://akr.club)",
+  "license": "ISC",
+  "dependencies": {
+    "pedantic-count": "github:AKRFranko/pedantic-count"
+  }
+}
