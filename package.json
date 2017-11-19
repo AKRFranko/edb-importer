@@ -1,20 +1,25 @@
 {
   "name": "EDB-catalog-brain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "pretest": "npm run-script build",
-    "test": "./node_modules/.bin/cucumber.js",
-    "posttest": "./node_modules/.bin/cucumber.js -f json:features/reports/test-report.json && node ./scripts/report.js && cp ./features/reports/test-report.html ../edb-frontend/",
-    "build": "node ./scripts/build.js && npx babel index.js --out-file ./compiled.js && browserify --standalone EDBImporter ./compiled.js -o browser.js"
+    "test": "./node_modules/.bin/cucumber.js -f json:features/reports/test-report.json",
+    "posttest": "node ./scripts/report.js && cp ./features/reports/test-report.html ../edb-frontend/",
+    "prebuild": "node ./scripts/build.js",
+    "build": "npx babel build.js --inputSourceMap=build.js.map --source-maps --out-file ./compiled.js && browserify --debug --standalone EDBImporter ./compiled.js -o index.js",
+    "postbuild": "uglifyjs index.js -c --source-map --output index.min.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.0.0-beta.32",
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "concat-with-sourcemaps": "^1.0.4",
     "cucumber": "^3",
-    "cucumber-html-reporter": "^3.0.4"
+    "cucumber-html-reporter": "^3.0.4",
+    "npx": "^9.7.1",
+    "uglify-js": "^3.1.9"
   },
   "author": "franko <code@akr.club> (http://akr.club)",
   "license": "ISC",

@@ -1,4 +1,6 @@
 var fs = require('fs');
+const Concat = require('concat-with-sourcemaps');
+var concat = new Concat( true, 'build.js', '\n');
 var files = [
   'head.js',
   'cart.js',
@@ -8,12 +10,25 @@ var files = [
   'bucket.product.js',
   'main.js'
 ];
-var contents = [];
 
+// var combined = sourceMap.combine.create('build.js')
 files.forEach( ( f )=>{
   var content = fs.readFileSync(process.cwd() + '/src/' + f,'utf8');
-  contents.push(content);
+  concat.add(`src/${f}`, content );
 });
 
-fs.writeFileSync(process.cwd()+'/index.js',  contents.join("\n"));
+fs.writeFileSync(process.cwd()+'/build.js',  concat.content);
+fs.writeFileSync(process.cwd()+'/build.js.map',  concat.sourceMap);
 
+
+
+
+// var offset = { line: 2 };
+// var base64 = combine
+//   .create('bundle.js')
+//   .addFile(fooFile, offset)
+//   .addFile(barFile, { line: offset.line + 8 })
+//   .base64();
+ 
+// var sm = convert.fromBase64(base64).toObject();
+// console.log(sm);
