@@ -1,0 +1,2090 @@
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.EDBImporter = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var PedanticCount = require('pedantic-count');
+var catMap = new Map();
+var typeMap = new Map();
+var dataMap = new Map();
+var productInstances = new Map();
+var bucketInstances = new Map();
+var cartMap = new WeakMap();
+var countersMap = new WeakMap();
+var choiceMap = new WeakMap();
+
+var shippingCosts = new Map();
+shippingCosts.set('furniture', { min: 500, below: [65, 150, 250], above: [0, 85, 150] });
+shippingCosts.set('small-furniture', { min: 500, below: [18, 25, 28], above: [0, 10, 15] });
+shippingCosts.set('accessories', { min: 50, below: [15, 15, 15], above: [0, 0, 0] });
+
+var Cart = function () {
+  function Cart(counts, cart) {
+    _classCallCheck(this, Cart);
+
+    this.tokens = new Map();
+    this.products = new Map();
+    this.zone = null;
+    this.discounts = [];
+    this.userLevel = false;
+    countersMap.set(this, counts);
+  }
+
+  _createClass(Cart, [{
+    key: 'setUserLevel',
+    value: function setUserLevel(userLevel) {
+      return this.userLevel = userLevel;
+    }
+  }, {
+    key: 'addCoupon',
+    value: function addCoupon(percent) {
+      return this.discounts.push(percent);
+    }
+  }, {
+    key: 'removeCoupon',
+    value: function removeCoupon(percent) {
+      return this.discounts = this.discounts.filter(function (d) {
+        return d !== percent;
+      });
+    }
+  }, {
+    key: 'setZone',
+    value: function setZone(string) {
+      this.zone = string == 'zone-1' ? 0 : string == 'zone-2' ? 1 : 2;
+      return true;
+    }
+  }, {
+    key: 'setZoneFromPostalCode',
+    value: function setZoneFromPostalCode(postcode) {
+
+      postcode = postcode.toUpperCase().trim();
+
+      var zones_table = {
+        'zone-1': /^(H..|G1.|M..|K1.|T2.|T3.|T5.|T6.|V5.|V6.|C1A|R2.|R3.|E2.|E1.|E3.|B3.|S7.|S4.|A1.|J4.).+$/,
+        'zone-3': /^(J|G|K|L|N|P|T|V|C|R|E|B|S|A|Y|X)0.+$/
+      };
+      if (!/^([a-zA-Z]\d[a-zA-Z]\s?\d[a-zA-Z]\d)$/.test(postcode)) {
+        return this.setZone('zone-3');
+      }
+      var found = 'zone-2';
+      Object.keys(zones_table).forEach(function (zone) {
+        var regex = zones_table[zone];
+        if (regex.test(postcode)) {
+          found = zone;
+        }
+      });
+
+      return this.setZone(found);
+    }
+  }, {
+    key: 'hasProduct',
+    value: function hasProduct(id) {
+      return this.products.has(typeof id == 'number' ? id : id.id);
+    }
+  }, {
+    key: 'incrItemQuantity',
+    value: function incrItemQuantity(cartItem, qty) {
+
+      cartItem.updateChoices.forEach(function (choice, name) {
+        if (name !== 'quantity') {
+          var option = choice.getOption(cartItem.choices[name]);
+          if (option instanceof Set) {
+            option.forEach(function (o) {
+              o.incrCartCount(qty);
+            });
+          } else {
+            option.incrCartCount(qty);
+          }
+        }
+      });
+      cartItem.choices.quantity += qty;
+      return true;
+    }
+  }, {
+    key: 'decrItemQuantity',
+    value: function decrItemQuantity(cartItem, qty) {
+      // console.log('DECR')
+      cartItem.updateChoices.forEach(function (choice, name) {
+        if (name !== 'quantity') {
+          var option = choice.getOption(cartItem.choices[name]);
+          if (option instanceof Set) {
+            option.forEach(function (o) {
+              o.decrCartCount(qty);
+            });
+          } else {
+            option.decrCartCount(qty);
+          }
+        }
+      });
+      cartItem.choices.quantity -= qty;
+      return true;
+    }
+  }, {
+    key: 'addItem',
+    value: function addItem(product) {
+      var it = this;
+      var selections = Object.assign({}, product.selections);
+      var id = product.id;
+      var qty = selections.quantity;
+      delete selections.quantity;
+
+      var data = { id: id, choices: selections, unitPrice: product.currentPrice };
+      var token = JSON.stringify(data);
+      Object.assign(data.choices, { quantity: 0 });
+      var cartItem = Object.assign(data, {
+        token: token,
+        choices: data.choices,
+        shippingClass: product.shippingClass,
+        updateChoices: product.choices,
+        incr: function incr(qty) {
+
+          return !!it.incrItemQuantity(cartItem, qty);
+        },
+        decr: function decr(qty) {
+          return !!it.decrItemQuantity(cartItem, qty);
+        },
+        remove: function remove(qty) {
+          return !!it.removeItem(cartItem);
+        }
+      });
+      Object.defineProperties(cartItem, {
+        minRegularPrice: { get: function get() {
+            var qty = this.choices.quantity === 0 ? 1 : this.choices.quantity;
+            return product.minRegularPrice * qty;
+          } },
+        maxRegularPrice: { get: function get() {
+            var qty = this.choices.quantity === 0 ? 1 : this.choices.quantity;
+            return product.maxRegularPrice * qty;
+          } },
+        minPrice: { get: function get() {
+            var qty = this.choices.quantity === 0 ? 1 : this.choices.quantity;
+            return product.minPrice * qty;
+          } },
+        maxPrice: { get: function get() {
+            var qty = this.choices.quantity === 0 ? 1 : this.choices.quantity;
+            return product.maxPrice * qty;
+          } },
+        itemCost: { get: function get() {
+            var qty = this.choices.quantity === 0 ? 1 : this.choices.quantity;
+            return this.unitPrice * qty;
+          } }
+      });
+      if (!this.products.has(id)) {
+        this.products.set(id, []);
+      }
+      // Object.assign(cartItem.choices, data.choices, { quantity: 0 });
+      this.products.get(id).push(token);
+      this.tokens.set(token, cartItem);
+      cartItem.incr(qty);
+      // console.log('cart now has %d items', this.tokens.size )
+      return this.tokens.get(token);
+    }
+  }, {
+    key: 'removeItem',
+    value: function removeItem(cartItem) {
+      cartItem.decr(cartItem.choices.quantity);
+      var tokens = this.products.get(cartItem.id);
+      var newTokens = tokens.filter(function (t) {
+        return t !== cartItem.token;
+      });
+      if (newTokens.length == 0) {
+        this.products.delete(cartItem.id);
+      } else {
+        this.products.set(cartItem.id, newTokens);
+      }
+      this.tokens.delete(cartItem.token);
+      return true;
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      var _this = this;
+
+      this.tokens.forEach(function (cartItem) {
+        _this.removeItem(cartItem);
+      });
+      this.zone = null;
+      return true;
+    }
+  }, {
+    key: 'discountCost',
+    get: function get() {
+      var _this2 = this;
+
+      if (this.itemCost <= 0) {
+        return 0;
+      }
+      var userLevelDiscount = !this.userLevel ? 0 : this.userLevel === 'VIP' ? 0.05 : this.userLevel === 'VVIP' ? 0.10 : this.userLevel === 'VVVIP' ? 0.15 : 0;
+      return [userLevelDiscount].concat(this.discounts).reduce(function (t, d) {
+        return d === 0 ? t : t + _this2.itemCost * -d;
+      }, 0);
+    }
+  }, {
+    key: 'shippingZone',
+    get: function get() {
+      if (this.zone === null) {
+        return 'n/a';
+      }
+      return 'zone-' + (this.zone + 1);
+    }
+  }, {
+    key: 'total',
+    get: function get() {
+      var t = this.itemCost + this.taxCost + this.shippingCost + this.discountCost;
+      if (isNaN(t)) return 'n/a';
+      return t;
+    }
+  }, {
+    key: 'taxCost',
+    get: function get() {
+      if (this.zone === null) {
+        return 'n/a';
+      }
+      return this.itemCost == 0 ? 0 : this.itemCost * 0.15;
+    }
+  }, {
+    key: 'shippingCost',
+    get: function get() {
+      if (this.zone === null) {
+        return 'n/a';
+      }
+      var zone = this.zone;
+      var itemCost = this.itemCost;
+      var shippingClass = 'accessories';
+      this.tokens.forEach(function (cartItem, token) {
+        var sclass = cartItem.shippingClass;
+        // console.log(sclass)
+        if (shippingClass == 'accessories' && sclass == 'small-furniture') {
+          shippingClass = sclass;
+        }
+        if ((shippingClass == 'small-furniture' || shippingClass == 'accessories') && sclass == 'furniture') {
+          shippingClass = sclass;
+        }
+      });
+      var rules = shippingCosts.get(shippingClass);
+      // console.log(currentPrice >= rules.min ? 'above' : 'bellow', currentPrice, rules.min )
+      if (itemCost >= rules.min) {
+        return rules.above[zone];
+      } else {
+        return rules.below[zone];
+      }
+    }
+  }, {
+    key: 'productCount',
+    get: function get() {
+      return this.products.size;
+    }
+  }, {
+    key: 'itemCount',
+    get: function get() {
+      return this.tokens.size;
+    }
+  }, {
+    key: 'itemCost',
+    get: function get() {
+      var total = 0.0;
+      this.tokens.forEach(function (cartItem, t) {
+        total += cartItem.itemCost;
+      });
+      return total;
+    }
+  }]);
+
+  return Cart;
+}();
+
+var Product = function () {
+  function Product(id, counts, cart) {
+    var _this3 = this;
+
+    _classCallCheck(this, Product);
+
+    this.id = id;
+    cartMap.set(this, cart);
+    countersMap.set(this, counts);
+    var vids = dataMap.get(this.id).variations;
+    if (vids && vids.length) {
+      vids.forEach(function (vid) {
+        productInstances.set(vid, new Product.Variation(vid, _this3, counts));
+      });
+    }
+    Object.defineProperty(this, 'name', { enumerable: true, configurable: true, value: this.name });
+    Object.defineProperty(this, 'description', { enumerable: true, configurable: true, value: this.description });
+    Object.defineProperty(this, 'image', { enumerable: true, configurable: true, value: this.image });
+    Object.defineProperty(this, 'images', { enumerable: true, configurable: true, value: this.images });
+    Object.defineProperty(this, 'type', { enumerable: true, configurable: true, value: this.type });
+    Object.defineProperty(this, 'wireframe', { enumerable: true, configurable: true, value: this.wireframe });
+    Object.defineProperty(this, 'anatomy', { enumerable: true, configurable: true, value: this.anatomy });
+    Object.defineProperty(this, 'why_we_love', { enumerable: true, configurable: true, value: this.why_we_love });
+    // Object.defineProperty( this, 'minRegularPrice', { enumerable: true, configurable: true, value: this.minRegularPrice } );
+    // Object.defineProperty( this, 'maxRegularPrice', { enumerable: true, configurable: true, value: this.maxRegularPrice } );
+    // Object.defineProperty( this, 'maxSalePrice', { enumerable: true, configurable: true, value: this.maxSalePrice } );
+    // Object.defineProperty( this, 'maxSalePrice', { enumerable: true, configurable: true, value: this.maxSalePrice } );
+  }
+
+  _createClass(Product, [{
+    key: 'hasBucket',
+    value: function hasBucket(name) {
+      return bucketInstances.has(name);
+    }
+  }, {
+    key: 'getBucket',
+    value: function getBucket(name) {
+      return bucketInstances.get(name);
+    }
+  }, {
+    key: 'hasVariation',
+    value: function hasVariation(name) {
+      var idx = dataMap.get(this.id).variations.findIndex(function (vid) {
+        return productInstances.get(vid).name == name;
+      });
+      return !!~idx;
+    }
+  }, {
+    key: 'getVariation',
+    value: function getVariation(name) {
+      var idx = dataMap.get(this.id).variations.findIndex(function (vid) {
+        return productInstances.get(vid).name == name;
+      });
+      if (~idx) {
+        var vid = dataMap.get(this.id).variations[idx];
+        return productInstances.get(vid);
+      }
+    }
+  }, {
+    key: 'shippingClass',
+    get: function get() {
+      return 'furniture';
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return dataMap.get(this.id).name;
+    }
+  }, {
+    key: 'description',
+    get: function get() {
+      return dataMap.get(this.id).description;
+    }
+  }, {
+    key: 'why_we_love',
+    get: function get() {
+      return {
+        title: this.meta.why_we_love_title,
+        content: this.meta.why_we_love_content
+      };
+    }
+  }, {
+    key: 'wireframe',
+    get: function get() {
+      if (!this.meta.wireframe) return { src: null, colors: [] };
+      return {
+        src: this.meta.wireframe.src, colors: this.meta.wireframe.colors || []
+      };
+    }
+  }, {
+    key: 'anatomy',
+    get: function get() {
+      var enfr = {};
+      if (!this.meta.anatomy_en) {
+        enfr.en = { src: null, colors: [] };
+      } else {
+        enfr.en = { src: this.meta.anatomy_en.src, colors: this.meta.anatomy_en.colors || [] };
+      }
+      if (!this.meta.anatomy_fr) {
+        enfr.fr = { src: null, colors: [] };
+      } else {
+        enfr.fr = { src: this.meta.anatomy_fr.src, colors: this.meta.anatomy_fr.colors || [] };
+      }
+      return enfr;
+    }
+  }, {
+    key: 'basePrice',
+    get: function get() {
+      if (!this.meta.base_price && 1 * this.meta.base_price !== 0) {
+        return null;
+      }
+      return parseInt(this.meta.base_price);
+    }
+  }, {
+    key: 'meta',
+    get: function get() {
+      var meta_box = dataMap.get(this.id).meta_box;
+      if (!meta_box) {
+        return {};
+      }
+      return Object.keys(meta_box).reduce(function (keep, key) {
+        if (/edb_/.test(key)) {
+          keep[key.replace(/edb_/, '')] = meta_box[key];
+        } else {
+          keep[key.replace(/^_/, '')] = meta_box[key];
+        }
+        return keep;
+      }, {});
+    }
+  }, {
+    key: 'image',
+    get: function get() {
+      var images = dataMap.get(this.id).images;
+      if (images.length) {
+        return { src: images[0].src, colors: images[0].colors || [] };
+      }
+      return { src: null, colors: [] };
+    }
+  }, {
+    key: 'images',
+    get: function get() {
+      var images = dataMap.get(this.id).images;
+      if (images.length) {
+        return images.slice(1).map(function (img) {
+          return { src: img.src, colors: img.colors || [] };
+        });
+      }
+      return [];
+    }
+  }, {
+    key: 'type',
+    get: function get() {
+      return typeMap.get(this.id);
+    }
+  }, {
+    key: 'minRegularPrice',
+    get: function get() {
+      var choicePrice = new PedanticCount.LoggingCount(0);
+      if (this.choices) {
+        this.choices.forEach(function (choice, name) {
+          // console.log(choice.minRegularPrice)
+          if (name !== 'quantity') {
+            choicePrice.incr(choice.minRegularPrice, 'add ' + choice.name + '\'s min regular price of $');
+          }
+        });
+      }
+      if (this.basePrice !== null) {
+        choicePrice.incr(this.basePrice, 'add the base unit price of $' + this.basePrice);
+      }
+      return choicePrice;
+    }
+  }, {
+    key: 'maxRegularPrice',
+    get: function get() {
+      var choicePrice = new PedanticCount.LoggingCount(0);
+      if (this.choices) {
+        this.choices.forEach(function (choice, name) {
+          if (name !== 'quantity') {
+            choicePrice.incr(choice.maxRegularPrice, 'add ' + choice.name + '\'s max regular price of $');
+          }
+        });
+      }
+      if (this.basePrice !== null) {
+        choicePrice.incr(this.basePrice, 'add the base unit price of $' + this.basePrice);
+      }
+      return choicePrice;
+    }
+  }, {
+    key: 'minSalePrice',
+    get: function get() {
+      var choicePrice = new PedanticCount.LoggingCount(0);
+      if (this.choices) {
+        this.choices.forEach(function (choice, name) {
+          if (name !== 'quantity') {
+            choicePrice.incr(choice.minSalePrice, 'add ' + choice.name + '\'s min sale price of $');
+          }
+        });
+      }
+      if (this.basePrice !== null) {
+        choicePrice.incr(this.basePrice, 'add the base unit price of $' + this.basePrice);
+      }
+      return choicePrice;
+    }
+  }, {
+    key: 'maxSalePrice',
+    get: function get() {
+      var choicePrice = new PedanticCount.LoggingCount(0);
+      if (this.choices) {
+        this.choices.forEach(function (choice, name) {
+          if (name !== 'quantity') {
+            choicePrice.incr(choice.maxSalePrice, 'add ' + choice.name + '\'s max sale price of $');
+          }
+        });
+      }
+      if (this.basePrice !== null) {
+        choicePrice.incr(this.basePrice, 'add the base unit price of $' + this.basePrice);
+      }
+      return choicePrice;
+    }
+  }, {
+    key: 'minPrice',
+    get: function get() {
+      return Math.min(this.minSalePrice, this.minRegularPrice);
+    }
+  }, {
+    key: 'maxPrice',
+    get: function get() {
+      return Math.max(this.maxSalePrice, this.maxRegularPrice);
+    }
+  }, {
+    key: 'currentPrice',
+    get: function get() {
+      var choicePrice = new PedanticCount.LoggingCount(0);
+      if (this.choices) {
+        this.choices.forEach(function (choice, name) {
+          if (name !== 'quantity') {
+            if (choice.selectedOption !== null) {
+              choicePrice.incr(choice.selectedOption.price, 'add ' + choice.name + '\'s current price of $');
+            } else {
+              choicePrice.incr(choice.minPrice, 'add ' + choice.name + '\'s max of $');
+            }
+          }
+        });
+      }
+      if (this.basePrice !== null) {
+        choicePrice.incr(this.basePrice, 'add the base unit price of $' + this.basePrice);
+      }
+      return choicePrice;
+    }
+  }]);
+
+  return Product;
+}();
+
+Product.Variation = function () {
+  function _class(id, parent, counts) {
+    _classCallCheck(this, _class);
+
+    this.id = id;
+    this.parent = parent;
+    countersMap.set(this, counts);
+    // productInstances.set(this.id, this );
+  }
+
+  _createClass(_class, [{
+    key: 'select',
+    value: function select(qty) {
+      return countersMap.get(this).incrCount('selectedCount', this.id, qty, 'select a quantity for variation #' + this.id + ' of');
+    }
+  }, {
+    key: 'unselect',
+    value: function unselect(qty) {
+      return countersMap.get(this).decrCount('selectedCount', this.id, qty);
+    }
+  }, {
+    key: 'incrCartCount',
+    value: function incrCartCount(qty) {
+      return countersMap.get(this).incrCount('cartCount', this.id, qty, 'added to cart a quantity for variation #' + this.id + ' of');
+    }
+  }, {
+    key: 'decrCartCount',
+    value: function decrCartCount(qty) {
+      return countersMap.get(this).decrCount('cartCount', this.id, qty, 'removed from cart a quantity for variation #' + this.id + ' of');
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      var attr = dataMap.get(this.id).attributes;
+      var name = Object.keys(attr).reduce(function (found, k) {
+        if (found) return found;
+        var a = attr[k];
+        if (/edb/.test(k)) {
+          found = a.replace(/^edb_/, '').replace(/_/g, '-');
+        }
+        return found;
+      }, false);
+      if (!name) {
+        return 'Unknown';
+      }
+      return name;
+    }
+  }, {
+    key: 'regularPrice',
+    get: function get() {
+      return parseFloat(dataMap.get(this.id).display_regular_price);
+    }
+  }, {
+    key: 'salePrice',
+    get: function get() {
+      var disp = dataMap.get(this.id).display_price;
+      return disp < this.regularPrice ? disp : null;
+    }
+  }, {
+    key: 'price',
+    get: function get() {
+      return this.salePrice === null ? this.regularPrice : this.salePrice;
+    }
+  }, {
+    key: 'selected',
+    get: function get() {
+      return !!this.isSelected;
+    },
+    set: function set(bool) {
+      var wasSelected = this.isSelected;
+      if (wasSelected) {
+        this.unselect(this.selectedCount);
+      }
+      this.isSelected = !!bool;
+      return true;
+    }
+  }, {
+    key: 'stockCount',
+    get: function get() {
+
+      if (this.parent.type == 'bucket') {
+        var v = countersMap.get(this).getCount('stockCount', this.id);
+        if (v > 0) {
+          return 'n/a';
+        } else {
+          return 0;
+        }
+      }
+
+      return countersMap.get(this).getCount('stockCount', this.id);
+    }
+  }, {
+    key: 'cartCount',
+    get: function get() {
+      return countersMap.get(this).getCount('cartCount', this.id);
+    }
+  }, {
+    key: 'selectedCount',
+    get: function get() {
+      return countersMap.get(this).getCount('selectedCount', this.id);
+    }
+  }]);
+
+  return _class;
+}();
+
+Product.Choice = function () {
+  function _class2(attr, parent) {
+    _classCallCheck(this, _class2);
+
+    this.name = attr.name;;
+    this.type = attr.variation ? 'variation' : attr.name == 'quantity' ? 'count' : 'bucket';
+    this.options = new Map();
+    this.selected = null;
+    this.parent = parent;
+    if (this.type == 'variation') {
+      attr.options.reduce(function (opts, name) {
+        var value;
+        if (parent.hasVariation(name)) {
+          value = parent.getVariation(name);
+        } else {
+          value = name;
+        }
+        opts.set(name, value);
+        return opts;
+      }, this.options);
+    }
+    if (this.type == 'bucket') {
+      attr.options.reduce(function (opts, name) {
+        var value;
+        if (parent.hasBucket(name)) {
+          value = parent.getBucket(name);
+        } else {
+          value = name;
+        }
+        opts.set(name, value);
+        return opts;
+      }, this.options);
+    }
+    if (this.type == 'count') {
+      this.options.set('min', 0);
+      this.options.set('step', 1);
+      this.options.set('max', 100);
+      this.selected = new PedanticCount.LoggingCount(0);
+    }
+  }
+
+  _createClass(_class2, [{
+    key: 'getOption',
+    value: function getOption(name) {
+      if (!this.options.has(name)) {
+        return null;
+      }
+      return this.options.get(name);
+    }
+  }, {
+    key: 'select',
+    value: function select(choice) {
+      var _this4 = this;
+
+      if (this.type == 'count') {
+        if (isNaN(choice)) throw new Error('Cannot select quantity of "' + choice + '"');
+        this.selected.incr(choice, 'increased the quantity choice by ' + choice);
+        this.parent.choices.forEach(function (parentChoice, name) {
+          if (parentChoice !== _this4) {
+            if (parentChoice.selected) {
+              parentChoice.options.get(parentChoice.selected).select(_this4.selected);
+            } else {
+              // console.log('not selected, ignore %s?', name);
+            }
+          }
+        });
+      } else {
+        this.selected = null;
+        this.options.forEach(function (option, name) {
+          if (name == choice) {
+            _this4.selected = name;
+            option.selected = true;
+          } else {
+            option.selected = false;
+          }
+        });
+      }
+      return true;
+    }
+  }, {
+    key: 'unselect',
+    value: function unselect(choice) {
+      if (this.type == 'count') {
+        if (isNaN(choice) && arguments.length > 0) {
+          throw new Error('Cannot unselect quantity of "' + choice + '"');
+        }
+        this.selected.decr(choice, 'decreased the quantity choice by ' + choice);
+      } else {
+        var current = this.selectedOption;
+        if (current) {
+          // console.log('current',current.selected)
+          current.selected = false;
+        }
+        this.selected = null;
+      }
+
+      return true;
+    }
+  }, {
+    key: 'minRegularPrice',
+    get: function get() {
+      if (this.type == 'count') {
+        return 0;
+      }
+
+      var prices = [];
+      this.options.forEach(function (option, name) {
+        if (!isNaN(option.regularPrice)) {
+          prices.push(option.regularPrice);
+        } else {
+          prices.push(0);
+        }
+      });
+
+      return Math.min.apply(Math, prices);
+    }
+  }, {
+    key: 'maxRegularPrice',
+    get: function get() {
+      if (this.type == 'count') {
+        return 0;
+      }
+      var prices = [];
+      this.options.forEach(function (option, name) {
+        if (!isNaN(option.regularPrice)) {
+          prices.push(option.regularPrice);
+        } else {
+          prices.push(0);
+        }
+      });
+      return Math.max.apply(Math, prices);
+    }
+  }, {
+    key: 'minSalePrice',
+    get: function get() {
+      if (this.type == 'count') {
+        return 0;
+      }
+      var prices = [];
+      this.options.forEach(function (option, name) {
+        if (option.salePrice !== null && !isNaN(option.salePrice)) {
+          prices.push(option.salePrice);
+        } else {
+          prices.push(isNaN(option.regularPrice) ? 0 : option.regularPrice);
+        }
+      });
+      return Math.min.apply(Math, prices);
+    }
+  }, {
+    key: 'maxSalePrice',
+    get: function get() {
+      if (this.type == 'count') {
+        return 0;
+      }
+      var prices = [];
+      this.options.forEach(function (option, name) {
+        if (option.salePrice !== null && !isNaN(option.salePrice)) {
+          prices.push(option.salePrice);
+        } else {
+          prices.push(isNaN(option.regularPrice) ? 0 : option.regularPrice);
+        }
+      });
+      return Math.max.apply(Math, prices);
+    }
+  }, {
+    key: 'minPrice',
+    get: function get() {
+      return Math.min(this.minSalePrice, this.minRegularPrice);
+    }
+  }, {
+    key: 'maxPrice',
+    get: function get() {
+      return Math.max(this.maxSalePrice, this.maxRegularPrice);
+    }
+  }, {
+    key: 'currentPrice',
+    get: function get() {
+      if (this.type == 'count') {
+        return 0;
+      }
+      var selectedOption = this.selectedOption;
+      if (selectedOption === null) {
+        return null;
+      }
+      return selectedOption.price;
+    }
+  }, {
+    key: 'selectedOption',
+    get: function get() {
+      if (this.type == 'count') {
+        return this.selected;
+      }
+      if (this.selected === null) {
+        return null;
+      }
+      return this.getOption(this.selected);
+    }
+  }]);
+
+  return _class2;
+}();
+
+Product.CompositeChoice = function () {
+  function _class3(parentChoice, parent) {
+    _classCallCheck(this, _class3);
+
+    this.name = parentChoice.name;
+    this.type = parentChoice.type;
+    this.parent = parent;
+    this.parentChoices = new Set();
+    // this.options = new Map();
+    // this.selected = null;
+  }
+
+  _createClass(_class3, [{
+    key: 'getOption',
+    value: function getOption(name) {
+      if (!this.options.has(name)) {
+        return null;
+      }
+      return this.options.get(name);
+    }
+  }, {
+    key: 'select',
+    value: function select(choice) {
+
+      this.parentChoices.forEach(function (parentChoice) {
+        // console.log('selected choice', choice, 'on parent', parentChoice.parent.id, parentChoice.name )
+        parentChoice.select(choice);
+      });
+      return true;
+    }
+  }, {
+    key: 'unselect',
+    value: function unselect(choice) {
+
+      this.parentChoices.forEach(function (parentChoice) {
+        // console.log('unselected choice', choice, 'on parent', parentChoice.parent.id, parentChoice.name )
+        parentChoice.unselect(choice);
+      });
+      return true;
+    }
+  }, {
+    key: 'add',
+    value: function add(parentChoice) {
+      this.parentChoices.add(parentChoice);
+    }
+  }, {
+    key: 'selected',
+    get: function get() {
+      var selected = null;
+      if (this.type == 'count') {
+        selected = [];
+        this.parentChoices.forEach(function (parentChoice) {
+          selected.push(parentChoice.selected);
+        });
+        return Math.min.apply(Math, selected);
+      } else {
+        this.parentChoices.forEach(function (parentChoice) {
+          if (parentChoice.selected !== null) {
+            selected = parentChoice.selected;
+          }
+        });
+      }
+
+      return selected;
+    }
+  }, {
+    key: 'selectedOption',
+    get: function get() {
+      if (this.type == 'count') {
+        return this.selected;
+      }
+      if (this.selected === null) {
+        return null;
+      }
+      return this.getOption(this.selected);
+    }
+  }, {
+    key: 'minRegularPrice',
+    get: function get() {
+      var total = new PedanticCount.LoggingCount(0);
+      this.parentChoices.forEach(function (parentChoice) {
+        total.incr(parentChoice.minRegularPrice, 'add child product #' + parentChoice.parent.id + '\'s min regular price of $');
+      });
+      return total;
+    }
+  }, {
+    key: 'maxRegularPrice',
+    get: function get() {
+      var total = new PedanticCount.LoggingCount(0);
+      this.parentChoices.forEach(function (parentChoice) {
+        total.incr(parentChoice.maxRegularPrice, 'add child product #' + parentChoice.parent.id + '\'s max regular price of $');
+      });
+      return total;
+    }
+  }, {
+    key: 'minSalePrice',
+    get: function get() {
+      var total = new PedanticCount.LoggingCount(0);
+      this.parentChoices.forEach(function (parentChoice) {
+        total.incr(parentChoice.minSalePrice, 'add child product #' + parentChoice.parent.id + '\'s min sale price of $');
+      });
+      return total;
+    }
+  }, {
+    key: 'maxSalePrice',
+    get: function get() {
+      var total = new PedanticCount.LoggingCount(0);
+      this.parentChoices.forEach(function (parentChoice) {
+        total.incr(parentChoice.maxSalePrice, 'add child product #' + parentChoice.parent.id + '\'s max sale price of $');
+      });
+      return total;
+    }
+  }, {
+    key: 'options',
+    get: function get() {
+      var options = new Map();
+      this.parentChoices.forEach(function (parentChoice) {
+        var parentOptions = parentChoice.options;
+        parentOptions.forEach(function (parentOption, name) {
+          if (!options.has(name)) {
+            options.set(name, new Set());
+          }
+          options.get(name).add(parentOption);
+        });
+      });
+      return options;
+    }
+  }]);
+
+  return _class3;
+}();
+
+var BaseProduct = function (_Product) {
+  _inherits(BaseProduct, _Product);
+
+  function BaseProduct(id, counts, cart) {
+    _classCallCheck(this, BaseProduct);
+
+    var _this5 = _possibleConstructorReturn(this, (BaseProduct.__proto__ || Object.getPrototypeOf(BaseProduct)).call(this, id, counts, cart));
+
+    Object.defineProperty(_this5, 'selected', { enumerable: true, configurable: true, value: _this5.selections });
+    // Object.defineProperty(,{ enumerable: true })
+    // this.selectedVariation=null;
+    // this.selectedBucket=null;
+    return _this5;
+  }
+
+  _createClass(BaseProduct, [{
+    key: 'select',
+    value: function select() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      // console.log('select', this.type, options );
+      this.choices.forEach(function (choice, name) {
+        if (~Object.keys(options).indexOf(name)) {
+          choice.select(options[name]);
+        }
+      });
+      return true;
+    }
+  }, {
+    key: 'unselect',
+    value: function unselect() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+
+      this.choices.forEach(function (choice, name) {
+        if (~Object.keys(options).indexOf(name)) {
+
+          choice.unselect(options[name]);
+        }
+      });
+      return true;
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+
+      var unsel = Object.assign({}, this.selections, { quantity: this.choices.get('quantity').selected });
+      // console.log('reset %d', this.id, unsel );
+      this.unselect(unsel);
+      return true;
+    }
+  }, {
+    key: 'addToCart',
+    value: function addToCart() {
+      var selectedQty = this.choices.get('quantity').selected;
+      if (selectedQty === 0) return new Error('Cannot add to cart, quantity missing');
+      if (!this.hasValidSelections) {
+        return new Error('Cannot add to cart, selections are missing');
+      }
+
+      cartMap.get(this).addItem(this);
+      return this.reset();
+    }
+  }, {
+    key: 'variations',
+    get: function get() {
+      return dataMap.get(this.id).variations.map(function (vid) {
+        return productInstances.get(vid);
+      });
+    }
+  }, {
+    key: 'choices',
+    get: function get() {
+      var _this6 = this;
+
+      if (choiceMap.has(this)) return choiceMap.get(this);
+      var attrs = dataMap.get(this.id).attributes;
+      if (!attrs) return null;
+      var choices = new Map();
+      choices.set('quantity', new Product.Choice({ name: 'quantity' }, this));
+      attrs.reduce(function (obj, attr) {
+        obj.set(attr.name, new Product.Choice(attr, _this6));
+        return obj;
+      }, choices);
+      choiceMap.set(this, choices);
+      return choices;
+    }
+  }, {
+    key: 'selections',
+    get: function get() {
+      var _this7 = this;
+
+      return Array.from(this.choices.keys()).reduce(function (o, key) {
+        o[key] = _this7.choices.get(key).selected;
+        return o;
+      }, {});
+    }
+  }, {
+    key: 'hasValidSelections',
+    get: function get() {
+      var selections = this.selections;
+      return Object.keys(selections).every(function (key) {
+        return key != 'quantity' ? selections[key] !== null : true;
+      });
+    }
+  }, {
+    key: 'stockCount',
+    get: function get() {
+      var _this8 = this;
+
+      var selectedOptionStock = null;
+      var source = null;
+      this.choices.forEach(function (choice, name) {
+        if (name !== 'quantity') {
+          var selectedOption = choice.selectedOption;
+          if (selectedOption) {
+            // console.log(selectedOption.stockCount)
+            if (selectedOption.stockCount == 'n/a') {
+              return selectedOptionStock;
+            }
+            selectedOptionStock = selectedOption.stockCount;
+            source = selectedOption;
+          }
+        }
+      });
+      if (selectedOptionStock === null) {
+        return this.variations.reduce(function (t, v) {
+          t.incr(v.stockCount, 'include product #' + _this8.id + '\'s variation #' + v.id + '\'s stockCount of');
+          return t;
+        }, new PedanticCount.LoggingCount(0));
+      }
+      // console.log( 'stockCount(BASE#%s)', this.id, selectedOptionStock, source.parent)
+      return selectedOptionStock;
+    }
+  }, {
+    key: 'cartCount',
+    get: function get() {
+      var _this9 = this;
+
+      if (this.selectedVariation) {
+
+        return this.getVariation(this.selectedVariation).cartCount;
+      } else {
+        return this.variations.reduce(function (t, v) {
+          t.incr(v.cartCount, 'include product#' + _this9.id + ' variation#' + v.id + ' cartCount of');
+          return t;
+        }, new PedanticCount.LoggingCount(0));
+      }
+    }
+  }, {
+    key: 'selectedCount',
+    get: function get() {
+      var _this10 = this;
+
+      if (this.selectedVariation) {
+        return this.getVariation(this.selectedVariation).selectedCount;
+      } else {
+        return this.variations.reduce(function (t, v) {
+          t.incr(v.selectedCount, 'include product#' + _this10.id + ' variation#' + v.id + '\'s selectedCount of');
+          return t;
+        }, new PedanticCount.LoggingCount(0));
+      }
+    }
+  }]);
+
+  return BaseProduct;
+}(Product);
+
+var CompositeProduct = function (_BaseProduct) {
+  _inherits(CompositeProduct, _BaseProduct);
+
+  function CompositeProduct() {
+    _classCallCheck(this, CompositeProduct);
+
+    return _possibleConstructorReturn(this, (CompositeProduct.__proto__ || Object.getPrototypeOf(CompositeProduct)).apply(this, arguments));
+  }
+
+  _createClass(CompositeProduct, [{
+    key: 'unselect',
+    value: function unselect() {
+      var _this12 = this;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      this.choices.forEach(function (choice, name) {
+        if (~Object.keys(options).indexOf(name)) {
+          var parentChoices = _this12.choices.get(name).parentChoices;
+          parentChoices.forEach(function (choice) {
+            choice.unselect(options[name]);
+          });
+        }
+      });
+      return true;
+    }
+    // selectQuantity( qty ){
+    //   return this.parents.reduce( ( success, parent )=>{
+    //     if(!success) return success;
+    //     return parent.selectQuantity( qty );
+    //   }, true );
+
+    // }
+
+    // selectVariation( name ){
+    //   return this.parents.reduce( ( success, parent )=>{
+    //     if(!success) return success;
+    //     return parent.selectVariation( name );
+    //   }, (this.selectedVariation = name) );
+    // }
+
+  }, {
+    key: 'parents',
+    get: function get() {
+      var gids = dataMap.get(this.id).meta_box.edb_group_ids;
+      var gids = gids.split(',').map(function (s) {
+        return parseInt(s.trim());
+      });
+      return gids.map(function (gid) {
+
+        return productInstances.get(gid);
+      });
+    }
+  }, {
+    key: 'choices',
+    get: function get() {
+      var _this13 = this;
+
+      if (choiceMap.has(this)) return choiceMap.get(this);
+      var compositeChoices = new Map();
+      return this.parents.reduce(function (comps, parent) {
+        parent.choices.forEach(function (parentChoice, name) {
+          if (!comps.has(name)) {
+            comps.set(name, new Product.CompositeChoice(parentChoice, _this13));
+          }
+          comps.get(name).add(parentChoice);
+        });
+        return comps;
+      }, compositeChoices);
+    }
+  }, {
+    key: 'stockCount',
+    get: function get() {
+      var counts = [];
+      this.parents.forEach(function (parent) {
+        if (parent.stockCount !== 'n/a') {
+          counts.push(parent.stockCount);
+          // console.log('parent[%d].cartCount',parent.id,parent.cartCount)
+          // console.log('parent[%d].stockCount',parent.id,parent.stockCount)
+        }
+      });
+      // console.log('counts', counts)
+      return Math.min.apply(Math, counts);
+    }
+  }, {
+    key: 'cartCount',
+    get: function get() {
+      return Math.min.apply(Math, this.parents.map(function (parent) {
+        return parent.cartCount;
+      }));
+    }
+  }, {
+    key: 'selectedCount',
+    get: function get() {
+      return this.parents.reduce(function (t, parent) {
+        return t + (parent.selectedCount ? 1 : 0);
+      }, 0) / this.parents.length;
+    }
+  }, {
+    key: 'basePrice',
+    get: function get() {
+      return this.parents.reduce(function (t, parent) {
+        return t + (parent.basePrice === null ? 0 : parent.basePrice);
+      }, 0);
+    }
+  }, {
+    key: 'minRegularPrice',
+    get: function get() {
+
+      var value = this.parents.reduce(function (t, parent) {
+        return t + parent.minRegularPrice;
+      }, 0);
+      // console.log('minRegularPrice', value)
+      return value;
+    }
+  }, {
+    key: 'maxRegularPrice',
+    get: function get() {
+      return this.parents.reduce(function (t, parent) {
+        return t + parent.maxRegularPrice;
+      }, 0);
+    }
+  }, {
+    key: 'minSalePrice',
+    get: function get() {
+      return this.parents.reduce(function (t, parent) {
+        return t + parent.minSalePrice;
+      }, 0);
+    }
+  }, {
+    key: 'maxSalePrice',
+    get: function get() {
+      return this.parents.reduce(function (t, parent) {
+        return t + parent.maxSalePrice;
+      }, 0);
+    }
+  }, {
+    key: 'currentPrice',
+    get: function get() {
+      var _this14 = this;
+
+      return this.parents.reduce(function (choicePrice, parent) {
+        if (parent.choices) {
+          parent.choices.forEach(function (choice, name) {
+            if (name !== 'quantity') {
+              var selected = _this14.choices.get(choice.name).selected;
+              if (selected !== null) {
+                var option = choice.getOption(selected);
+                choicePrice.incr(option.price, 'add ' + name + '\'s current price of $');
+              }
+            }
+          });
+        }
+        if (parent.basePrice !== null) {
+          choicePrice.incr(parent.basePrice, 'add the base unit price of $' + parent.basePrice);
+        }
+        return choicePrice;
+      }, new PedanticCount.LoggingCount(0));
+    }
+  }]);
+
+  return CompositeProduct;
+}(BaseProduct);
+
+var BucketProduct = function (_BaseProduct2) {
+  _inherits(BucketProduct, _BaseProduct2);
+
+  function BucketProduct(id, counts) {
+    _classCallCheck(this, BucketProduct);
+
+    var _this15 = _possibleConstructorReturn(this, (BucketProduct.__proto__ || Object.getPrototypeOf(BucketProduct)).call(this, id, counts));
+
+    _this15.selectedVariation = null;
+    _this15.variations.forEach(function (v) {
+      bucketInstances.set(v.name, v);
+    });
+    return _this15;
+  }
+
+  return BucketProduct;
+}(BaseProduct);
+
+var EDBCatalogBrain = function () {
+  function EDBCatalogBrain() {
+    _classCallCheck(this, EDBCatalogBrain);
+
+    this.counts.createIndex('stockCount');
+    this.counts.createVirtual('cartCount', 0);
+    this.counts.createVirtual('selectedCount', 0);
+
+    this.counts.link('stockCount', 'selectedCount');
+    this.counts.link('stockCount', 'cartCount');
+    this.cart = new Cart(this.counts);
+  }
+
+  _createClass(EDBCatalogBrain, [{
+    key: 'getProduct',
+    value: function getProduct(id) {
+      var type = typeMap.get(id);
+      if (productInstances.has(id)) {
+        return productInstances.get(id);
+      } else {
+        switch (type) {
+          case 'normal':
+            productInstances.set(id, new Product(id, this.counts, this.cart));
+            break;
+          case 'base':
+            productInstances.set(id, new BaseProduct(id, this.counts, this.cart));
+            break;
+          case 'composite':
+            productInstances.set(id, new CompositeProduct(id, this.counts, this.cart));
+            break;
+          case 'bucket':
+            productInstances.set(id, new BucketProduct(id, this.counts, this.cart));
+            break;
+        }
+      }
+      return productInstances.get(id);
+    }
+  }, {
+    key: 'importVariations',
+    value: function importVariations(json) {
+      var _this16 = this;
+
+      json.variation_data.forEach(function (v) {
+        var id = v.variation_id;
+        dataMap.set(id, v);
+        _this16.counts.setCount('stockCount', id, v.stock);
+      });
+    }
+  }, {
+    key: 'importCategories',
+    value: function importCategories(json) {
+
+      var cats = json.categories;
+      cats.forEach(function (cat) {
+        dataMap.set(cat.slug, cat);
+        if (!catMap.has(cat.slug)) {
+          catMap.set(cat.slug, new Set());
+        }
+        catMap.get(cat.slug).add(json.id);
+      });
+    }
+  }, {
+    key: 'importTypes',
+    value: function importTypes(json) {
+      // console.log(json.meta_box)
+      if (json.meta_box && json.meta_box.edb_group_ids) {
+        typeMap.set(json.id, 'composite');
+        return 'composite';
+      } else if (json.meta_box && json.meta_box.edb_bucket_slug) {
+        typeMap.set(json.id, 'bucket');
+        return 'bucket';
+      } else if (json.meta_box && json.meta_box.edb_base_price && json.meta_box.edb_base_price != '') {
+        typeMap.set(json.id, 'base');
+        return 'base';
+      } else {
+        typeMap.set(json.id, 'normal');
+        return 'normal';
+      }
+    }
+  }, {
+    key: 'import',
+    value: function _import(json) {
+      var _this17 = this;
+
+      if (Array.isArray(json)) {
+        return json.map(function (item) {
+          return _this17.import(item);
+        });
+      }
+      var type = this.importTypes(json);
+      this.importCategories(json);
+      if (json.variation_data) {
+        this.importVariations(json);
+      }
+      dataMap.set(json.id, json);
+      if (type == 'bucket') {
+        this.getProduct(json.id);
+      }
+    }
+  }, {
+    key: 'counts',
+    get: function get() {
+      return PedanticCount.CountIndex;
+    }
+  }, {
+    key: 'categories',
+    get: function get() {
+      return Array.from(catMap.keys());
+    }
+  }, {
+    key: 'catalog',
+    get: function get() {
+      var _this18 = this;
+
+      return this.categories.reduce(function (mapped, cat) {
+        mapped.set(cat, Array.from(catMap.get(cat).values()).reduce(function (map, id) {
+          map.set(id, _this18.getProduct(id));
+          return map;
+        }, new Map()));
+        return mapped;
+      }, new Map());
+    }
+  }]);
+
+  return EDBCatalogBrain;
+}();
+
+exports.EDBCatalogBrain = EDBCatalogBrain;
+
+},{"pedantic-count":2}],2:[function(require,module,exports){
+(()=>{
+  /**
+  * @file Count.js
+  * @author Franko <franko@akr.club>
+  * @version 0.1
+  */
+  
+  /**
+   * History WeakMap for all instances
+   * @const histMap
+   */
+  const histMap = new WeakMap();
+  
+  /**
+  * Loglines WeakMap for all instances
+  * @const logMap
+  */
+  const logMap  = new WeakMap();
+  
+  /**
+  * histories memo
+  * @const histories
+  */
+  const histories = function (object) {
+      if (!histMap.has(object))
+          histMap.set(object, [ ]);
+      return histMap.get(object);
+  };
+  
+  /**
+  * loglines memo
+  * @const loglines
+  */
+  const loglines = function (object) {
+      if (!logMap.has(object))
+          logMap.set(object, [ ]);
+      return logMap.get(object);
+  };
+  
+  const explanation = function( loglines, history, result, indent ){
+    result = result||['\nScenario: Explain a Count'];
+    indent = indent||0;
+    
+    history.forEach( ( n, i )=>{
+      let log = loglines[i];
+      if(Array.isArray(log)){
+        let hist = new Array(log.length);
+        hist.fill( n );
+        indent++;
+        return explanation( log, hist, result, indent );
+      }else{
+        result.push( /^initialize/.test(log) ? 'When I ' + log : 'And I ' + log);
+      }
+    });
+    var space = new Array(indent).fill(' ').join('');
+    indent--;
+    return result.join('\n'+space+' ');
+  }
+  
+  
+  
+  class BaseCount{
+    
+    static __defineProperty( obj, name, instance, logging ){
+      
+      Object.defineProperty( obj, name, {
+        enumerable: true,
+        value: instance
+      });
+      
+      if(!obj.__countProperties__){
+        Object.defineProperty( obj, '__countProperties__', {
+          enumerable: false,
+          writeable: true,
+          value: {}
+        }); 
+      }
+      
+      Object.defineProperty( obj.__countProperties__, name, {
+        enumerable: true,
+        get: ()=>{ return  instance }
+      });
+      
+      Object.defineProperty( obj, name +'History', {
+        get: ()=>{ return  instance.history }
+      });
+      
+      if(logging){
+        
+        Object.defineProperty( obj, name + 'Log', {
+          get: ()=>{ return  instance.log }
+        });
+        
+        Object.defineProperty( obj, name + 'Explanation', {
+          get: ()=>{ return  instance.explain().replace(/Explain a Count/g, 'Explain a Count named ' + name  ) }
+        });  
+        
+        var oldExplain = obj.explainCounts;
+        obj.explainCounts = ()=>{
+          var previous = oldExplain ? oldExplain.call( obj ) : null;
+          var bunch = previous ? [ previous ] : [];
+          Object.keys(obj.__countProperties__).forEach( ( name )=>{
+            bunch.push(obj[name+'Explanation'])
+          });
+          return bunch.join("\n");
+        }
+      }
+  
+    }
+    
+    
+    static defineProperty( obj, name, init, strict, logging ){
+      var clazz = BaseCount
+      if( logging ){
+        clazz = LoggingCount;
+      }else if( strict ){
+        clazz = StrictCount;
+      }
+      var instance = new clazz( init );
+      
+      if(typeof Object.getPrototypeOf(obj) == 'function'){
+        BaseCount.__defineProperty( obj.prototype, name, instance, logging );
+      }else{
+        BaseCount.__defineProperty( obj, name, instance,logging );
+      }
+      
+      return obj;
+    }
+    
+    /**
+    * Represents a Count.
+    * @constructor
+    * @param {number} initial - The initial value
+    */  
+    
+    constructor(initial){
+      if(isNaN(initial)){
+        this.set( 0 );
+      }else{
+        this.set(initial);
+      }
+    }
+    
+    /**
+    * Returns the numeric value of the count
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    valueOf(){
+      return Number(histories(this).reduce( (t,n)=>{ return t + n; }, 0 ));
+    }
+    
+    /**
+    * Returns the array of values used to calculate the result.
+    * @returns {array} The values for all changes
+    */  
+    
+    get history(){
+      return Array.from(histories(this));
+    }
+    
+    /**
+    * Returns the length of the history
+    * @returns {array} The values for all changes
+    */  
+    
+    get length(){
+      return histories(this).length;
+    }
+  
+    /**
+    * Returns the numeric value of the count
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    get(){
+      return 1*this;
+    }
+    
+    /**
+    * Adds a new value to the history
+    * @param {number} value - An integer
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    set(v){
+      if(isNaN(v)){
+        return this.valueOf;
+      }
+      
+      if( typeof v.history !== 'undefined'){
+        v.history.forEach( ( v )=>{
+          this.set( v );
+        });
+      }else{
+        histories(this).push( v );  
+      }
+      
+      return this.valueOf;
+    }
+    
+    /**
+    * Adds a new value incrementation the history
+    * @param {number} value - A non-negative integer
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    incr(n){
+      
+      if(isNaN(n) ){
+          n=0;
+      }
+      if(n<0 ){
+        n = Math.abs(n);
+      }
+      return this.set( n );
+    }
+    
+    /**
+    * Adds a new value decrementation the history
+    * @param {number} value - A non-negative integer
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    decr(n){
+      
+      if(isNaN(n) ){
+        n=0;
+      }
+      if(n<0 ){
+        n = Math.abs(n);
+      }
+      
+      return this.set( -1*n );
+    }
+    
+    /**
+    * Returns the history to the first value set.
+    * @returns {number} The sum of the historical changes (the initial value) 
+    */  
+    
+    reset(){
+      var h = histories(this);
+      var first = h.shift();
+      h.splice(0, h.length);
+      h.push( first );
+      return this.get();
+    }
+    
+    
+  }
+  
+  class StrictCount extends BaseCount{
+    /**
+    * Represents a Strict Count.
+    * @constructor
+    * @param {number} initial - The initial value (required)
+    */  
+    constructor(initial){
+      if(isNaN(initial)) throw new ReferenceError('Cannot initialize without numeric value');
+      super(initial);
+    }
+    
+    /**
+    * Adds a new value incrementation the history
+    * @param {number} value - A non-negative integer (required)
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    incr(n){
+      if(isNaN(n)) throw new ReferenceError('Cannot set non-numeric value');
+      if(n < 0) throw new ReferenceError('Cannot increment by negative value');
+      return super.incr(n);
+    }
+    
+    /**
+    * Adds a new value decrementation the history
+    * @param {number} value - A non-negative integer (required)
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    decr(n){
+      if(isNaN(n)) throw new ReferenceError('Cannot set non-numeric value');
+      if(n < 0) throw new ReferenceError('Cannot decrement by negative value');
+      return super.decr(n);
+    }
+    
+    /**
+    * Adds a new value to the history
+    * @param {number} value - An integer (required)
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    set(v){
+      if(isNaN(v)) throw new ReferenceError('Cannot set non-numeric value');
+      return super.set(v);
+    }
+  }
+  
+  class LoggingCount extends StrictCount{
+    
+    __defaultMessage( v, message ){
+      var prefix = this.length === 1 ? 'initialize to' : message ? message : v < 0 ? 'decrement by' : 'increment by';
+      return [prefix, Math.abs(v) ].join(' ');
+    }
+    
+    /**
+    * Adds a new value to the history
+    * @param {number} value - An integer (required)
+    * @param {string} message - A message associated with this modification (required)
+    * @returns {number} The sum of the historical changes
+    */ 
+    
+    set( v, message, fn ){
+      // fn = fn || 'set';
+      var result = super.set( v );
+      message = this.__defaultMessage( v, message );
+      if( typeof v.log != 'undefined'){
+        v.log.forEach( ( l, i )=>{
+          loglines(this).push( l );
+        });
+      }else{
+        loglines(this).push( message );
+      }
+      return result;
+    }
+    
+    /**
+    * Adds a new value incrementation the history
+    * @param {number} value - A non-negative integer (required)
+    * @param {string} message - A message associated with this modification (required)
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    incr(v,message){
+      return this.set(v,message);
+    }
+    
+    /**
+    * Adds a new value decrementation the history
+    * @param {number} value - A non-negative integer (required)
+    * @param {string} message - A message associated with this modification (required)
+    * @returns {number} The sum of the historical changes
+    */  
+    
+    decr(v,message){
+      return this.set(-1* Math.abs(v),message);
+    }
+    
+    /**
+    * Returns log of messages associated with value changes.
+    * @returns {mixed} an array of messages or message arrays
+    */  
+    
+    get log(){
+      return Array.from(loglines(this));
+    }
+    
+    /**
+    * Returns the history to the first value set, sets the first log entry as the entire log and adds a "reset" message
+    * @returns {number} The sum of the historical changes (the initial value) 
+    */  
+    
+    reset(){
+      super.reset();
+      var initial = histories(this)[0];
+      var l = loglines(this);
+      var first = Array.from(l);
+      first.push('reset to ' + initial);
+      l.splice(0, l.length);
+      l.push( first );
+      return this.get();
+    }
+    
+    explain(){
+      var explained = explanation( loglines(this), histories(this) );
+      if(/Then the value equals \d/.test(explained)){
+        return explained;
+      }
+      var total = this.get();
+      var space = explained.split('\n').pop().replace(/^(\s+).+/,"$1");
+      return explained + `\n${space}Then the value equals ${total}`;
+    }
+  }
+  
+  
+  /**
+   * Index Map
+   * @const indexMap
+   */
+  const indexMap = new Map();
+  const indexLinks = new Map();
+  const virtMap = new Map();
+  class CountIndex{
+  
+    static get map(){
+      return indexMap;
+    }
+    
+    static clear(){
+      indexMap.clear();
+      indexLinks.clear();
+      virtMap.clear();
+      return true;
+    }
+    
+    static clearIndex( name ){
+      indexMap.delete(name);
+      indexLinks.delete(name);
+      virtMap.delete(name);
+      return true;
+    }
+    
+    static createIndex( name ){
+      if(!this.map.has(name)){
+        var idMap = new Map();
+        idMap.set('ids', new Map() );
+        this.map.set( name, idMap );
+      }
+      return new CountIndex( name );
+    }
+    
+    static createVirtual( name, defaultValue ){
+      if(!this.map.has(name)){
+        var idMap = new Map();
+        idMap.set('ids', new Map() );
+        this.map.set( name, idMap );
+      }
+      virtMap.set( name, defaultValue );
+      return new CountIndex( name );
+    }
+    
+    static index( name ){
+      return this.map.get( name );
+    }
+    static exists( name ){
+      return this.map.has( name );
+    }
+    
+    static getIds( name ){
+      if( !this.exists(name) ) return [];
+      return Array.from(this.index(name).get('ids').keys());
+    }
+    
+    static getCounts( name ){
+      if( !this.exists(name) ) return [];
+      return Array.from(this.index(name).get('ids').values());
+    }
+    static getTotal( name ){
+      return this.getCounts(name).reduce( ( t, c )=>{
+        return t + c;
+      }, 0);
+    }
+    
+    static hasCount( name, id ){
+      return this.map.has(name) && this.index(name).has('ids') && this.index(name).get('ids').has( id );
+    }
+    
+    static getCount( name, id ){
+      if(!this.hasCount( name, id )){
+        if(virtMap.has(name)) return virtMap.get(name);
+        throw new ReferenceError('No index for "#'+id+'" @ "'+name+'".');
+      }
+      var count = this.map.get( name ).get( 'ids' ).get(id);
+      if(!indexLinks.has( name )){
+        return count;
+      }
+      var links = Array.from(indexLinks.get( name ).values());
+      
+      return links.reduce( (t,l)=>{
+        return t - this.getCount( l, id );
+      }, count )
+      // console.log('lnk', linkName)
+      // var linkCount = this.getCount(linkName, id );
+      // return count - linkCount;
+      
+    }
+    
+    static setCount( name, id, value ){
+      if(this.hasCount( name, id )){
+        throw new ReferenceError('Initial Count can only me set once for "#'+id+'" @ "'+name+'".');
+      }else{
+        return this.map.get( name ).get('ids').set(id, new LoggingCount(value));
+      }
+    }
+    
+    static incrCount( name, id, n, msg ){
+      if(!this.hasCount( name, id )){
+        if(virtMap.has(name)){
+          this.setCount( name, id, virtMap.get(name));
+          return this.incrCount( name, id, n , msg);
+        }
+        throw new ReferenceError('No count for id "'+id+'".');
+      }else{
+        return this.map.get( name ).get('ids').get(id).incr( n , msg);
+      }
+    }
+    static decrCount( name, id, n, msg ){
+      if(!this.hasCount( name, id )){
+        if(virtMap.has(name)){
+          this.setCount( name, id, virtMap.get(name));
+          return this.decrCount( name, id, n , msg);
+        }
+        throw new ReferenceError('No count for id "'+id+'".');
+      }else{
+        return this.map.get( name ).get('ids').get(id).decr( n , msg)
+      }
+    }
+    
+    static resetCount( name, id){
+      if(!this.hasCount( name, id )){
+        return true;
+        // throw new ReferenceError('No count for id "'+id+'".');
+      }else{
+        return this.map.get( name ).get('ids').get(id).reset()
+      }
+    }
+  
+    static getHistory( name, id ){
+      if(!this.hasCount( name, id )){
+        throw new ReferenceError('No history for id "'+id+'".');
+      }else{
+        return this.map.get( name ).get('ids').get(id).history;
+      }
+    }
+    
+    static getLog( name, id ){
+      if(!this.hasCount( name, id )){
+        throw new ReferenceError('No log for id "'+id+'".');
+      }else{
+        return this.map.get( name ).get('ids').get(id).log;
+      }
+    }
+    
+    static explain( name, id ){
+      if(!this.hasCount( name, id )){
+        throw new ReferenceError('No explanation for id "'+id+'".');
+      }else{
+        return this.map.get( name ).get('ids').get(id).explain().replace('Scenario: Explain a Count', "Scenario: Explain "+name+" for the id " + id );
+      }
+    }
+    
+    static link( a, b ){
+      if(!indexLinks.has(a)){
+        indexLinks.set(a, new Set() );
+      }
+      indexLinks.get(a).add(b);
+      return true;
+    }
+    
+    constructor( name ){
+      this.name = name;
+    } 
+    
+    get ids(){
+      return CountIndex.getIds( this.name );
+    }
+    
+    get counts(){
+      return CountIndex.getCounts( this.name );
+    }
+    
+    set( id, initialCount ){
+      return CountIndex.setCount( this.name, id, initialCount );
+    }
+    
+    get( id ){
+      return CountIndex.getCount( this.name, id );
+    }
+    
+    incr( id, n , msg){
+     return CountIndex.incrCount( this.name, id, n , msg);
+    }
+    
+    decr( id, n, msg ){
+     return CountIndex.decrCount( this.name, id, n , msg);
+    }
+    
+    
+    history( id ){
+      return CountIndex.getHistory( this.name, id );
+    }
+    
+    log( id ){
+      return CountIndex.getLog( this.name, id );
+    }
+    
+    explain( id ){
+      return CountIndex.explain( this.name, id );
+    }
+    
+    link( name ){
+      CountIndex.link( this.name, name );
+      return true;
+    }
+    
+  }
+  
+  class VirtualIndex extends CountIndex{
+    constructor( name ){
+      super(name);
+      this.virtual = true;
+    }
+  }
+  
+  
+ exports.CountIndex = CountIndex;
+ exports.Count = BaseCount;
+ exports.StrictCount = StrictCount;
+ exports.LoggingCount = LoggingCount;
+ 
+})();
+
+},{}]},{},[1])(1)
+});

@@ -1,0 +1,6262 @@
+[
+  {
+    "description": "Converting WORDPRESS/WOOCOMMERCE data to usable program objects \nyields a catalog of products with stocks and counts.\n\nDefinitions:\n\nBase Product:      A base product is a simple kind of product with variations ie: MARITIME OTTOMAN, MARITIME 3P\nComposite Product: A composite product is a combination of other products ie: MARITIME RAF = MARITIME OTTOMAN + MARITIME 3P",
+    "keyword": "Feature",
+    "name": "Product Data",
+    "line": 1,
+    "id": "product-data",
+    "tags": [],
+    "uri": "features/00-import-data.feature",
+    "elements": [
+      {
+        "id": "product-data;importing-data-from-wordpress/woocommerce",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Importing DATA from WORDPRESS/WOOCOMMERCE",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "WOOCOMMERCE Product Data",
+            "match": {
+              "location": "features/step_definitions/importer.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I import the data",
+            "match": {
+              "location": "features/step_definitions/importer.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "I should have categories and products",
+            "match": {
+              "location": "features/step_definitions/importer.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-ottoman\"-has-counts",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "A \"MARITIME OTTOMAN\" has counts",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the current product has a \"stockCount\" of 4",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-ottoman\"-has-counts",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "A \"MARITIME OTTOMAN\" has counts",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the current product has a \"cartCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-3p\"-has-counts",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "A \"MARITIME 3P\" has counts",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "the current product has a \"stockCount\" of 4",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-3p\"-has-counts",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "A \"MARITIME 3P\" has counts",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "the current product has a \"cartCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-raf\"-has-counts",
+        "keyword": "Scenario",
+        "line": 37,
+        "name": "A \"MARITIME RAF\" has counts",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the current product has a \"stockCount\" of 4",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-raf\"-has-counts",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "A \"MARITIME RAF\" has counts",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the current product has a \"cartCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-ottoman\"-has-choices",
+        "keyword": "Scenario",
+        "line": 40,
+        "name": "A \"MARITIME OTTOMAN\" has choices",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 41,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the current product has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the current product has a \"leg\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 44,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-3p\"-has-choices",
+        "keyword": "Scenario",
+        "line": 46,
+        "name": "A \"MARITIME 3P\" has choices",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 47,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "the current product has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "the current product has a \"leg\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 50,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-data;a-\"maritime-raf\"-has-choices",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "A \"MARITIME RAF\" has choices",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 53,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the current product has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "the current product has a \"leg\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 56,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Products have choices that can be selected.\nChanging choices should change stock/cart counts.\nAdding/Removing items from cart change stock/cart counts.\n\nDefinitions:\n\nBase Product:      A base product is a simple kind of product with variations ie: MARITIME OTTOMAN, MARITIME 3P\nComposite Product: A composite product is a combination of other products ie: MARITIME RAF = MARITIME OTTOMAN + MARITIME 3P",
+    "keyword": "Feature",
+    "name": "Product Choices",
+    "line": 1,
+    "id": "product-choices",
+    "tags": [],
+    "uri": "features/01-manipulate-products.feature",
+    "elements": [
+      {
+        "id": "product-choices;a-\"maritime-ottoman\"-updates-counts-when-something-is-selected",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "A \"MARITIME OTTOMAN\" updates counts when something is selected",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the current product has a \"slipcover\" choice selected as \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:73"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "the current product has a \"stockCount\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the current product has a \"cartCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;a-\"maritime-ottoman\"-updates-counts-when-a-quantity-is-selected",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "A \"MARITIME OTTOMAN\" updates counts when a quantity is selected",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 21,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "the current product has a \"slipcover\" choice selected as \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the current product has a \"quantity\" choice selected as 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "the current product has a \"stockCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the current product has a \"cartCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;when-the-user-views-a-different-product,-selections-on-current-product-should-be-reset",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "when the user views a different product, selections on current product should be reset",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 30,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "the parent \"MARITIME OTTOMAN\" has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "the parent \"MARITIME OTTOMAN\" has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:91"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "the parent \"MARITIME OTTOMAN\" has a \"leg\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:91"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "the parent \"MARITIME OTTOMAN\" has a stock of 4",
+            "match": {
+              "location": "features/step_definitions/importer.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "the parent \"MARITIME OTTOMAN\" has a cart of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:38"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "the current stock count is 4",
+            "match": {
+              "location": "features/step_definitions/importer.js:24"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the current cart count is 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:28"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;a-\"maritime-raf\"-updates-counts-when-selected/added",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "A \"MARITIME RAF\" updates counts when selected/added",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 40,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the current stock count is 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "the current cart count is 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:28"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 45,
+            "name": "the parent \"MARITIME OTTOMAN\" has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:50"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "the parent \"MARITIME 3P\" has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:50"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "the current product has a \"slipcover\" choice selected as \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:73"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "the current product has a \"quantity\" choice selected as 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 50,
+            "name": "the current product has a \"stockCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 51,
+            "name": "the current product has a \"cartCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;a-\"maritime-ottoman\"-cannot-be-added-to-cart-if-it's-missing-options",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "A \"MARITIME OTTOMAN\" cannot be added to cart if it's missing options",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 54,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 55,
+            "name": "I have no leg options selected",
+            "match": {
+              "location": "features/step_definitions/importer.js:110"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 56,
+            "name": "the current product has a \"leg\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 57,
+            "name": "addToCart returns an error",
+            "match": {
+              "location": "features/step_definitions/importer.js:118"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;a-\"maritime-raf\"-can-be-added-to-cart",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "A \"MARITIME RAF\" can be added to cart",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 60,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "the current stock count is 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:24"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "the current cart count is 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:28"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "the parent \"MARITIME OTTOMAN\" has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:50"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "the parent \"MARITIME 3P\" has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:50"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "the current stock count is 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:24"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "the current cart count is 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:28"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 70,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 71,
+            "name": "the current product has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 72,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 74,
+            "name": "the current product has a \"stockCount\" of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 75,
+            "name": "the current product has a \"cartCount\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;a-\"maritime-ottoman\"-can-be-added-to-cart",
+        "keyword": "Scenario",
+        "line": 77,
+        "name": "A \"MARITIME OTTOMAN\" can be added to cart",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 78,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 79,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 80,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 81,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 82,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 83,
+            "name": "the current product has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 84,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "the current product has a \"stockCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 86,
+            "name": "the current product has a \"cartCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;a-\"maritime-3p\"-can-be-added-to-cart",
+        "keyword": "Scenario",
+        "line": 88,
+        "name": "A \"MARITIME 3P\" can be added to cart",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 89,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 90,
+            "name": "the current stock count is 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "the current cart count is 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:28"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 92,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 93,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 94,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 95,
+            "name": "the current stock count is -1",
+            "match": {
+              "location": "features/step_definitions/importer.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 96,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 97,
+            "name": "the current product has a \"slipcover\" choice set to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:69"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 98,
+            "name": "the current product has a \"quantity\" choice selected as 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:77"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 99,
+            "name": "the current product has a \"stockCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 100,
+            "name": "the current product has a \"cartCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:86"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;cart-items-should-now-exist-in-the-cart.",
+        "keyword": "Scenario",
+        "line": 102,
+        "name": "Cart items should now exist in the cart.",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 103,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 104,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;cart-items-have-quantities",
+        "keyword": "Scenario",
+        "line": 106,
+        "name": "Cart items have quantities",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 107,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 108,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 109,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 110,
+            "name": "the cart has a \"itemCount\" of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 111,
+            "name": "the cart has a \"productCount\" of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 112,
+            "name": "the current cart item has a \"quantity\" choice of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;cart-items-can-have-quantities-manipulated",
+        "keyword": "Scenario",
+        "line": 114,
+        "name": "Cart items can have quantities manipulated",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 115,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 116,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 117,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 118,
+            "name": "I increase the current cart item by 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:151"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 119,
+            "name": "the current cart item has a \"quantity\" choice of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;cart-items-can-be-removed",
+        "keyword": "Scenario",
+        "line": 121,
+        "name": "Cart items can be removed",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 122,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 123,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 124,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 125,
+            "name": "I remove the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:169"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 126,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 127,
+            "name": "the cart has a \"productCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-choices;cart-items-can-be-removed",
+        "keyword": "Scenario",
+        "line": 129,
+        "name": "Cart items can be removed",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 130,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 131,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 132,
+            "name": "I set the last cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:145"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 133,
+            "name": "I remove the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:169"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 134,
+            "name": "the cart has a \"itemCount\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 135,
+            "name": "the cart has a \"productCount\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Prices should be consistent based on user choices. (the taxes are all set to 0.15 in these tests )",
+    "keyword": "Feature",
+    "name": "Product Pricing",
+    "line": 1,
+    "id": "product-pricing",
+    "tags": [],
+    "uri": "features/02-product-pricing.feature",
+    "elements": [
+      {
+        "id": "product-pricing;items-in-the-catalog-have-prices",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Items in the catalog have prices",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the current product has a \"minRegularPrice\" number",
+            "match": {
+              "location": "features/step_definitions/importer.js:174"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "the current product has a \"maxRegularPrice\" number",
+            "match": {
+              "location": "features/step_definitions/importer.js:174"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the current product has a \"minSalePrice\" number",
+            "match": {
+              "location": "features/step_definitions/importer.js:174"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "the current product has a \"maxSalePrice\" number",
+            "match": {
+              "location": "features/step_definitions/importer.js:174"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the current product has a \"minPrice\" number",
+            "match": {
+              "location": "features/step_definitions/importer.js:174"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "the current product has a \"maxPrice\" number",
+            "match": {
+              "location": "features/step_definitions/importer.js:174"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-pricing;base-items-in-the-catalog-have-prices-(not-testing-sales-prices-yet..)",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Base items in the catalog have prices (not testing sales prices yet..)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 29,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "I know that the current product has a base price of $300",
+            "match": {
+              "location": "features/step_definitions/importer.js:180"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "I know that the cheapest leg is \"leg-002\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:184"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I know that the most expensive leg is \"leg-001\" at $25",
+            "match": {
+              "location": "features/step_definitions/importer.js:188"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "I know that the cheapest slipcover is \"slipcover-006\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:192"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "I know that the most expensive slipcover is \"slipcover-003\" at $100",
+            "match": {
+              "location": "features/step_definitions/importer.js:196"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the current product has a \"minRegularPrice\" of $300",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "the current product has a \"maxRegularPrice\" of $425",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "the current product has a \"minPrice\" of $300",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the current product has a \"maxPrice\" of $425",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-pricing;base-items-in-the-catalog-have-prices-(not-testing-sales-prices-yet..)",
+        "keyword": "Scenario",
+        "line": 42,
+        "name": "Base items in the catalog have prices (not testing sales prices yet..)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 43,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "I know that the current product has a base price of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:180"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 45,
+            "name": "I know that the cheapest leg is \"leg-002\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:184"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "I know that the most expensive leg is \"leg-001\" at $25",
+            "match": {
+              "location": "features/step_definitions/importer.js:188"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "I know that the cheapest slipcover is \"slipcover-006\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:192"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "I know that the most expensive slipcover is \"slipcover-003\" at $150",
+            "match": {
+              "location": "features/step_definitions/importer.js:196"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "the current product has a \"minRegularPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 50,
+            "name": "the current product has a \"maxRegularPrice\" of $1075",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 53,
+            "name": "the current product has a \"minPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the current product has a \"maxPrice\" of $1075",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "the current product has a \"currentPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-pricing;base-items-in-the-catalog-change-prices-when-selections-are-made-(not-testing-sales-prices-yet..)",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "Base items in the catalog change prices when selections are made (not testing sales prices yet..)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 58,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 59,
+            "name": "I know that the current product has a base price of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:180"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 60,
+            "name": "I know that the most expensive leg is \"leg-001\" at $25",
+            "match": {
+              "location": "features/step_definitions/importer.js:188"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I know that the cheapest slipcover is \"slipcover-006\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:192"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I choose a \"slipcover\" named \"slipcover-006\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 63,
+            "name": "the current product has a \"minRegularPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "the current product has a \"maxRegularPrice\" of $1075",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the current product has a \"currentPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the current product has a \"currentPrice\" of $925",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-pricing;composite-items-in-the-catalog-have-prices-(not-testing-sales-prices-yet..)",
+        "keyword": "Scenario",
+        "line": 69,
+        "name": "Composite items in the catalog have prices (not testing sales prices yet..)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 70,
+            "name": "I use a \"MARITIME RAF\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I know that the current product has a base price of $1200",
+            "match": {
+              "location": "features/step_definitions/importer.js:180"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I know that the cheapest leg is \"leg-002\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:184"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I know that the most expensive leg is \"leg-001\" at $50",
+            "match": {
+              "location": "features/step_definitions/importer.js:188"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I know that the cheapest slipcover is \"slipcover-006\" at $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:192"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "I know that the most expensive slipcover is \"slipcover-003\" at $250",
+            "match": {
+              "location": "features/step_definitions/importer.js:196"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 76,
+            "name": "the current product has a \"minRegularPrice\" of $1200",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 77,
+            "name": "the current product has a \"maxRegularPrice\" of $1500",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 80,
+            "name": "the current product has a \"minPrice\" of $1200",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 81,
+            "name": "the current product has a \"maxPrice\" of $1500",
+            "match": {
+              "location": "features/step_definitions/importer.js:200"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Prices should be consistent based on quantities and location (the taxes are all set to 0.15 in these tests )",
+    "keyword": "Feature",
+    "name": "Cart Pricing",
+    "line": 1,
+    "id": "cart-pricing",
+    "tags": [],
+    "uri": "features/03-cart-pricing.feature",
+    "elements": [
+      {
+        "id": "cart-pricing;cart-items-have-prices-(using-maritime-ottoman-added-in-cart-from-another-scenario)",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Cart items have prices (using MARITIME OTTOMAN added in cart from another scenario)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the current cart item has a \"quantity\" choice of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the current cart item has a \"minRegularPrice\" of $300",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the current cart item has a \"maxRegularPrice\" of $425",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the current cart item has a \"minPrice\" of $300",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the current cart item has a \"maxPrice\" of $425",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "the current cart item has a \"itemCost\" of $425",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the cart has a \"itemCost\" of $425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "the cart has a \"shippingCost\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "the cart has a \"taxCost\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the cart has a \"total\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;cart-items-multiply-prices-based-on-quantity-(using-maritime-ottoman-added-from-another-scenario)",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "Cart items multiply prices based on quantity (using MARITIME OTTOMAN added from another scenario)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "the current cart item has a \"quantity\" choice of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I increase the current cart item by 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:151"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the current cart item has a \"quantity\" choice of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the current cart item has a \"minRegularPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "the current cart item has a \"maxRegularPrice\" of $1275",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "the current cart item has a \"minPrice\" of $900",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "the current cart item has a \"maxPrice\" of $1275",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "the current cart item has a \"itemCost\" of $1275",
+            "match": {
+              "location": "features/step_definitions/importer.js:206"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 32,
+            "name": "the cart has a \"itemCost\" of $1275",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "the cart has a \"shippingCost\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the cart has a \"taxCost\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the cart has a \"total\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;the-cart-shipping-cost-changes-when-i-set-a-zone-(above-minimum)",
+        "keyword": "Scenario",
+        "line": 37,
+        "name": "The cart shipping cost changes when I set a zone (above minimum)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "the current cart item has a \"quantity\" choice of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the cart has a \"taxCost\" of $191.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the cart has a \"total\" of $1466.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;the-cart-shipping-cost-changes-when-i-change-to-zone-1-(above-minimum)",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "The cart shipping cost changes when I change to zone 1 (above minimum)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 45,
+            "name": "I set the zone to \"zone-2\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 46,
+            "name": "the cart has a \"shippingCost\" of $85",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "the cart has a \"taxCost\" of $191.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "the cart has a \"total\" of $1551.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;the-cart-shipping-cost-changes-when-i-change-to-zone-2-(above-minimum)",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "The cart shipping cost changes when I change to zone 2 (above minimum)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 51,
+            "name": "I set the zone to \"zone-3\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "the cart has a \"shippingCost\" of $150",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 53,
+            "name": "the cart has a \"taxCost\" of $191.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the cart has a \"total\" of $1616.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;the-cart-shipping-cost-changes-when-i-change-to-zone-1-(below-minimum)",
+        "keyword": "Scenario",
+        "line": 56,
+        "name": "The cart shipping cost changes when I change to zone 1 (below minimum)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "the current cart item has a \"quantity\" choice of 3",
+            "match": {
+              "location": "features/step_definitions/importer.js:165"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I decrease the current cart item by 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:155"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 59,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "the cart has a \"shippingCost\" of $65",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 61,
+            "name": "the cart has a \"taxCost\" of $63.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 62,
+            "name": "the cart has a \"total\" of $553.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;the-cart-shipping-cost-changes-when-i-change-zone-2-(below-minimum)",
+        "keyword": "Scenario",
+        "line": 64,
+        "name": "The cart shipping cost changes when I change zone 2 (below minimum)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 65,
+            "name": "I set the zone to \"zone-2\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 66,
+            "name": "the cart has a \"shippingCost\" of $150",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the cart has a \"taxCost\" of $63.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 68,
+            "name": "the cart has a \"total\" of $638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;the-cart-shipping-cost-changes-when-i-change-zone-3-(below-minimum)",
+        "keyword": "Scenario",
+        "line": 70,
+        "name": "The cart shipping cost changes when I change zone 3 (below minimum)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 71,
+            "name": "I set the zone to \"zone-3\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 72,
+            "name": "the cart has a \"shippingCost\" of $250",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 73,
+            "name": "the cart has a \"taxCost\" of $63.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 74,
+            "name": "the cart has a \"total\" of $738.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;a-cart-knows-nothing-about-shipping-and-taxes-if-it-has-no-postal-code",
+        "keyword": "Scenario",
+        "line": 76,
+        "name": "A cart knows nothing about shipping and taxes if it has no postal code",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 78,
+            "name": "I reset the zone to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:227"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 79,
+            "name": "I do not provide a postal code",
+            "match": {
+              "location": "features/step_definitions/importer.js:236"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 80,
+            "name": "the cart has a \"shippingZone\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;a-cart-knows-the-shipping-taxes-and-zone-for-a-postal-code",
+        "keyword": "Scenario",
+        "line": 82,
+        "name": "A cart knows the shipping taxes and zone for a postal code",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 84,
+            "name": "I provide a postal code of \"H2A 2A2\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:240"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "the cart has a \"shippingZone\" of \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 86,
+            "name": "the cart has a \"taxCost\" of $63.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;a-cart-knows-the-shipping-taxes-and-zone-for-a-postal-code",
+        "keyword": "Scenario",
+        "line": 88,
+        "name": "A cart knows the shipping taxes and zone for a postal code",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 89,
+            "name": "I provide a postal code of \"Z0R 1M2\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:240"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 90,
+            "name": "the cart has a \"shippingZone\" of \"zone-2\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 91,
+            "name": "the cart has a \"taxCost\" of $63.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;a-cart-knows-the-shipping-taxes-and-zone-for-a-postal-code",
+        "keyword": "Scenario",
+        "line": 93,
+        "name": "A cart knows the shipping taxes and zone for a postal code",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 94,
+            "name": "I provide a postal code of \"J07 2B4\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:240"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 95,
+            "name": "the cart has a \"shippingZone\" of \"zone-3\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 96,
+            "name": "the cart has a \"taxCost\" of $63.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing;a-cart-can-have-it's-zone-cleared",
+        "keyword": "Scenario",
+        "line": 98,
+        "name": "A cart can have it's zone cleared",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the cart has items",
+            "match": {
+              "location": "features/step_definitions/importer.js:136"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I set the first cart item as the current cart item",
+            "match": {
+              "location": "features/step_definitions/importer.js:140"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 99,
+            "name": "I reset the zone to nothing",
+            "match": {
+              "location": "features/step_definitions/importer.js:227"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 100,
+            "name": "the cart has a \"shippingZone\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 101,
+            "name": "the cart has a \"taxCost\" of \"n/a\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:215"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "  The cart can have coupons,\n  these should be included in the calculations\n  when avaialable.",
+    "keyword": "Feature",
+    "name": "Cart Pricing With Coupons",
+    "line": 1,
+    "id": "cart-pricing-with-coupons",
+    "tags": [],
+    "uri": "features/04-cart-pricing-coupons.feature",
+    "elements": [
+      {
+        "id": "cart-pricing-with-coupons;a-coupon-can-be-applied",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "A coupon can be applied",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 28,
+            "name": "a coupon for %15 off regular products",
+            "match": {
+              "location": "features/step_definitions/importer.js:256"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "the cart has a \"total\" of $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 30,
+            "name": "the coupon for %15 is applied",
+            "match": {
+              "location": "features/step_definitions/importer.js:260"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "the cart has discounts including 0.15",
+            "match": {
+              "location": "features/step_definitions/importer.js:264"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 32,
+            "name": "the cart has a \"discountCost\" of $-213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "the cart has a \"total\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing-with-coupons;another-coupon-can-also-be-applied",
+        "keyword": "Scenario",
+        "line": 35,
+        "name": "Another coupon can also be applied",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "a coupon for %10 off regular products",
+            "match": {
+              "location": "features/step_definitions/importer.js:256"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "the cart has a \"total\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "the coupon for %10 is applied",
+            "match": {
+              "location": "features/step_definitions/importer.js:260"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "the cart has discounts including 0.10",
+            "match": {
+              "location": "features/step_definitions/importer.js:264"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the cart has discounts including 0.15",
+            "match": {
+              "location": "features/step_definitions/importer.js:264"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the cart has a \"discountCost\" of $-356.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the cart has a \"total\" of $1282.5",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing-with-coupons;a-coupon-can-be-removed",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "a coupon can be removed",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 45,
+            "name": "a coupon for %10 off regular products",
+            "match": {
+              "location": "features/step_definitions/importer.js:256"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "the cart has a \"total\" of $1282.5",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 47,
+            "name": "the coupon for %10 is removed",
+            "match": {
+              "location": "features/step_definitions/importer.js:269"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "the cart has no discounts including 0.10",
+            "match": {
+              "location": "features/step_definitions/importer.js:273"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "the cart has discounts including 0.15",
+            "match": {
+              "location": "features/step_definitions/importer.js:264"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 50,
+            "name": "the cart has a \"discountCost\" of $-213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 51,
+            "name": "the cart has a \"total\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing-with-coupons;another-coupon-can-be-removed",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "another coupon can be removed",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 54,
+            "name": "a coupon for %15 off regular products",
+            "match": {
+              "location": "features/step_definitions/importer.js:256"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "the cart has a \"total\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 56,
+            "name": "the coupon for %15 is removed",
+            "match": {
+              "location": "features/step_definitions/importer.js:269"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 57,
+            "name": "the cart has no discounts including 0.10",
+            "match": {
+              "location": "features/step_definitions/importer.js:273"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 58,
+            "name": "the cart has no discounts including 0.15",
+            "match": {
+              "location": "features/step_definitions/importer.js:273"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the cart has a \"discountCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "the cart has a \"total\" of $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "  The cart can have special rates for some members,\n  these should be included in the calculations\n  when avaialable.",
+    "keyword": "Feature",
+    "name": "Cart Pricing With Special Rates",
+    "line": 1,
+    "id": "cart-pricing-with-special-rates",
+    "tags": [],
+    "uri": "features/05-cart-pricing-member-rates.feature",
+    "elements": [
+      {
+        "id": "cart-pricing-with-special-rates;a-vip-user-has-5%-of-regular-products",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "A VIP user has 5% of regular products",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the initial cart total is $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:293"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 29,
+            "name": "it's a VIP user",
+            "match": {
+              "location": "features/step_definitions/importer.js:277"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "the cart has a \"discountCost\" of $-71.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "the cart has a \"total\" of $1567.5",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing-with-special-rates;a-vvip-user-has-10%-of-regular-products",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "A VVIP user has 10% of regular products",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the initial cart total is $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:293"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 34,
+            "name": "it's a VVIP user",
+            "match": {
+              "location": "features/step_definitions/importer.js:281"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the cart has a \"discountCost\" of $-142.5",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "the cart has a \"total\" of $1496.25",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing-with-special-rates;a-vvvip-user-has-15%-of-regular-products",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "A VVVIP user has 15% of regular products",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the initial cart total is $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:293"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 39,
+            "name": "it's a VVVIP user",
+            "match": {
+              "location": "features/step_definitions/importer.js:285"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the cart has a \"discountCost\" of $-213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the cart has a \"total\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cart-pricing-with-special-rates;a-normal-user-has-0%-of-regular-products",
+        "keyword": "Scenario",
+        "line": 43,
+        "name": "A NORMAL user has 0% of regular products",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I have a cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:132"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I reset the cart",
+            "match": {
+              "location": "features/step_definitions/importer.js:252"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the cart has a \"itemCount\" of 0",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I use a \"MARITIME OTTOMAN\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I use a \"MARITIME 3P\" as the current product",
+            "match": {
+              "location": "features/step_definitions/importer.js:18"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I choose a \"slipcover\" named \"slipcover-003\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I choose a \"leg\" named \"leg-001\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:57"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I choose a \"quantity\" of 1",
+            "match": {
+              "location": "features/step_definitions/importer.js:63"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "addToCart returns true",
+            "match": {
+              "location": "features/step_definitions/importer.js:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the cart has a \"itemCount\" of 2",
+            "match": {
+              "location": "features/step_definitions/importer.js:158"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I set the zone to \"zone-1\"",
+            "match": {
+              "location": "features/step_definitions/importer.js:223"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the cart has a \"itemCost\" of $1425",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the cart has a \"shippingCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the cart has a \"taxCost\" of $213.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the initial cart total is $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:293"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 44,
+            "name": "it's a NORMAL user",
+            "match": {
+              "location": "features/step_definitions/importer.js:289"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 45,
+            "name": "the cart has a \"discountCost\" of $0",
+            "match": {
+              "location": "features/step_definitions/importer.js:212"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 46,
+            "name": "the cart has a \"total\" of $1638.75",
+            "match": {
+              "location": "features/step_definitions/importer.js:248"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

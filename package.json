@@ -1,15 +1,20 @@
 {
-  "name": "edb-importer",
+  "name": "EDB-catalog-brain",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "pretest": "npm run-script build",
     "test": "./node_modules/.bin/cucumber.js",
-    "build": "cp ./src/importer.js ./index.js && cp ./src/importer.js ./browser.js && sed -i 's/exports/window/g' browser.js"
+    "posttest": "./node_modules/.bin/cucumber.js -f json:features/reports/test-report.json && node ./scripts/report.js && cp ./features/reports/test-report.html ../edb-frontend/",
+    "build": "node ./scripts/build.js && npx babel index.js --out-file ./compiled.js && browserify --standalone EDBImporter ./compiled.js -o browser.js"
   },
   "devDependencies": {
-    "cucumber": "^3"
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cucumber": "^3",
+    "cucumber-html-reporter": "^3.0.4"
   },
   "author": "franko <code@akr.club> (http://akr.club)",
   "license": "ISC",

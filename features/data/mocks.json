@@ -54,7 +54,7 @@
   "meta_box": {
     "inline_featured_image": "0",
     "edb_is_bucket": "0",
-    "_min_variation_price": "0",
+    "_min_variation_price": "0", 
     "_max_variation_price": "100",
     "_min_price_variation_id": "472",
     "_max_price_variation_id": "469",
@@ -320,7 +320,7 @@
     "stock": 9999999931
   }, {
     "attributes": {
-      "attribute_pa_edb_leg": "edb_leg_000"
+      "attribute_pa_edb_leg": "edb_leg_002"
     },
     "display_price": 0,
     "display_regular_price": 0,

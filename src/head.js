@@ -1,0 +1,9 @@
+var PedanticCount = require('pedantic-count');
+const catMap = new Map();
+const typeMap = new Map();
+const dataMap = new Map();
+const productInstances = new Map();
+const bucketInstances = new Map(); 
+const cartMap = new WeakMap();
+const countersMap = new WeakMap();
+const choiceMap  = new WeakMap();
