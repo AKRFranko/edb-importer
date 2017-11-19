@@ -1,15 +1,12 @@
 {
   "name": "edb-catalog-brain",
   "description": "",
-  "main": "index.js",
+  "main": "index.min.js",
   "authors": [
     "franko <code@akr.club> (http://akr.club)"
   ],
   "license": "ISC",
   "homepage": "https://github.com/Codiad/Codiad",
-  "scripts": {
-    "preinstall": "cp ./src/importer.js ./index.js && cp ./src/importer.js ./browser.js && sed -i 's/exports/window/g' browser.js"
-  },
   "ignore": [
     "**/.*",
     "node_modules",

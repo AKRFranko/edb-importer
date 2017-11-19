@@ -1310,4 +1310,4 @@ class EDBCatalogBrain{
   }
   
 }
-exports.EDBCatalogBrain = EDBCatalogBrain;
+module.exports = EDBCatalogBrain;

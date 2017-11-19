@@ -1,5 +1,5 @@
 var {defineSupportCode} = require('cucumber');
-const EDBCatalogBrain = require( process.cwd() + '/index.js' ).EDBCatalogBrain;
+const EDBCatalogBrain = require( process.cwd() + '/index.js' );
 const Mocks = require( process.cwd() + '/features/data/mocks.json' );
 const brain = new EDBCatalogBrain();
 

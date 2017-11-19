@@ -1655,6 +1655,6 @@ function () {
   return EDBCatalogBrain;
 }();
 
-exports.EDBCatalogBrain = EDBCatalogBrain;
+module.exports = EDBCatalogBrain;
 
 //# sourceMappingURL=compiled.js.map

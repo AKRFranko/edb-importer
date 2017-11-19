@@ -1,6 +1,6 @@
 {
   "name": "EDB-catalog-brain",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "./node_modules/.bin/cucumber.js -f json:features/reports/test-report.json",
     "posttest": "node ./scripts/report.js && cp ./features/reports/test-report.html ../edb-frontend/",
     "prebuild": "node ./scripts/build.js",
-    "build": "npx babel build.js --inputSourceMap=build.js.map --source-maps --out-file ./compiled.js && browserify --debug --standalone EDBImporter ./compiled.js -o index.js",
+    "build": "npx babel build.js --inputSourceMap=build.js.map --source-maps --out-file ./compiled.js && browserify  --standalone EDBCatalog ./compiled.js --debug -o index.js",
     "postbuild": "uglifyjs index.js -c --source-map --output index.min.js"
   },
   "devDependencies": {
