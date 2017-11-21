@@ -122,8 +122,7 @@
               "location": "features/step_definitions/importer.js:86"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           }
         ]
@@ -179,8 +178,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -229,7 +227,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2
+              "duration": 3
             }
           }
         ]
@@ -265,7 +263,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3
+              "duration": 4
             }
           }
         ]
@@ -287,8 +285,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -300,7 +297,8 @@
               "location": "features/step_definitions/importer.js:69"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -346,8 +344,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -371,7 +368,8 @@
               "location": "features/step_definitions/importer.js:69"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -405,7 +403,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -430,8 +429,7 @@
               "location": "features/step_definitions/importer.js:69"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -477,7 +475,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -514,7 +513,8 @@
               "location": "features/step_definitions/importer.js:77"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -526,7 +526,8 @@
               "location": "features/step_definitions/importer.js:86"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -538,7 +539,8 @@
               "location": "features/step_definitions/importer.js:86"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -560,8 +562,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -585,7 +586,8 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -633,7 +635,8 @@
               "location": "features/step_definitions/importer.js:86"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -655,8 +658,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -704,7 +706,8 @@
               "location": "features/step_definitions/importer.js:32"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -728,7 +731,8 @@
               "location": "features/step_definitions/importer.js:24"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -762,8 +766,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -788,8 +791,7 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -801,8 +803,7 @@
               "location": "features/step_definitions/importer.js:24"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -838,7 +839,8 @@
               "location": "features/step_definitions/importer.js:50"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -863,8 +865,7 @@
               "location": "features/step_definitions/importer.js:73"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -876,7 +877,8 @@
               "location": "features/step_definitions/importer.js:77"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -937,7 +939,8 @@
               "location": "features/step_definitions/importer.js:110"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -996,7 +999,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1020,8 +1024,7 @@
               "location": "features/step_definitions/importer.js:24"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1069,7 +1072,8 @@
               "location": "features/step_definitions/importer.js:24"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1082,7 +1086,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1
+              "duration": 2
             }
           },
           {
@@ -1131,7 +1135,8 @@
               "location": "features/step_definitions/importer.js:77"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1143,7 +1148,8 @@
               "location": "features/step_definitions/importer.js:86"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1177,7 +1183,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1213,8 +1220,7 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1227,7 +1233,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1
+              "duration": 2
             }
           },
           {
@@ -1263,8 +1269,7 @@
               "location": "features/step_definitions/importer.js:86"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1359,7 +1364,8 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1371,7 +1377,8 @@
               "location": "features/step_definitions/importer.js:24"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1383,7 +1390,8 @@
               "location": "features/step_definitions/importer.js:127"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1453,7 +1461,8 @@
               "location": "features/step_definitions/importer.js:132"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1465,7 +1474,8 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -1511,7 +1521,8 @@
               "location": "features/step_definitions/importer.js:140"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1593,8 +1604,7 @@
               "location": "features/step_definitions/importer.js:140"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1606,8 +1616,7 @@
               "location": "features/step_definitions/importer.js:151"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1653,8 +1662,7 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1678,8 +1686,7 @@
               "location": "features/step_definitions/importer.js:169"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1703,8 +1710,7 @@
               "location": "features/step_definitions/importer.js:158"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           }
         ]
@@ -1750,7 +1756,8 @@
               "location": "features/step_definitions/importer.js:145"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1819,7 +1826,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1844,7 +1852,8 @@
               "location": "features/step_definitions/importer.js:174"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1856,8 +1865,7 @@
               "location": "features/step_definitions/importer.js:174"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1869,8 +1877,7 @@
               "location": "features/step_definitions/importer.js:174"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -1882,7 +1889,8 @@
               "location": "features/step_definitions/importer.js:174"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1916,7 +1924,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1940,7 +1949,8 @@
               "location": "features/step_definitions/importer.js:184"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1976,7 +1986,8 @@
               "location": "features/step_definitions/importer.js:196"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -1988,7 +1999,8 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2024,8 +2036,7 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           }
         ]
@@ -2059,8 +2070,7 @@
               "location": "features/step_definitions/importer.js:180"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2072,8 +2082,7 @@
               "location": "features/step_definitions/importer.js:184"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2109,8 +2118,7 @@
               "location": "features/step_definitions/importer.js:196"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2173,7 +2181,8 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -2255,7 +2264,8 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2267,7 +2277,8 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2279,7 +2290,8 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2350,8 +2362,7 @@
               "location": "features/step_definitions/importer.js:184"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2399,7 +2410,8 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2411,8 +2423,7 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2424,8 +2435,7 @@
               "location": "features/step_definitions/importer.js:200"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2507,7 +2517,8 @@
               "location": "features/step_definitions/importer.js:165"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2519,7 +2530,8 @@
               "location": "features/step_definitions/importer.js:206"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2532,7 +2544,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2
+              "duration": 3
             }
           },
           {
@@ -2544,7 +2556,8 @@
               "location": "features/step_definitions/importer.js:206"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2569,7 +2582,8 @@
               "location": "features/step_definitions/importer.js:206"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2581,7 +2595,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2593,7 +2608,8 @@
               "location": "features/step_definitions/importer.js:215"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2699,8 +2715,7 @@
               "location": "features/step_definitions/importer.js:165"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2738,8 +2753,7 @@
               "location": "features/step_definitions/importer.js:206"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2751,7 +2765,8 @@
               "location": "features/step_definitions/importer.js:206"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2775,7 +2790,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2811,7 +2827,8 @@
               "location": "features/step_definitions/importer.js:215"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -2845,8 +2862,7 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2858,7 +2874,8 @@
               "location": "features/step_definitions/importer.js:140"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2906,8 +2923,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -2954,7 +2970,8 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -2990,7 +3007,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3002,8 +3020,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3015,8 +3032,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           }
         ]
@@ -3038,7 +3054,8 @@
               "location": "features/step_definitions/importer.js:132"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3074,8 +3091,7 @@
               "location": "features/step_definitions/importer.js:223"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3111,7 +3127,8 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -3145,7 +3162,8 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3169,8 +3187,7 @@
               "location": "features/step_definitions/importer.js:165"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3265,8 +3282,7 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3361,7 +3377,8 @@
               "location": "features/step_definitions/importer.js:136"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3373,8 +3390,7 @@
               "location": "features/step_definitions/importer.js:140"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3398,7 +3414,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3410,8 +3427,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3445,7 +3461,8 @@
               "location": "features/step_definitions/importer.js:132"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3692,8 +3709,7 @@
               "location": "features/step_definitions/importer.js:132"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3717,7 +3733,8 @@
               "location": "features/step_definitions/importer.js:140"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3741,8 +3758,7 @@
               "location": "features/step_definitions/importer.js:215"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3836,7 +3852,8 @@
               "location": "features/step_definitions/importer.js:215"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -3869,8 +3886,7 @@
               "location": "features/step_definitions/importer.js:132"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3882,7 +3898,8 @@
               "location": "features/step_definitions/importer.js:252"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3894,7 +3911,8 @@
               "location": "features/step_definitions/importer.js:158"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -3906,8 +3924,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3931,8 +3948,7 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -3970,8 +3986,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4007,7 +4022,8 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4068,7 +4084,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4092,7 +4109,8 @@
               "location": "features/step_definitions/importer.js:256"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4152,7 +4170,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -4210,7 +4229,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4319,7 +4339,8 @@
               "location": "features/step_definitions/importer.js:127"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4379,8 +4400,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4428,7 +4448,8 @@
               "location": "features/step_definitions/importer.js:264"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4452,8 +4473,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4465,7 +4485,8 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -4511,8 +4532,7 @@
               "location": "features/step_definitions/importer.js:158"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4536,7 +4556,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4548,7 +4569,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4586,7 +4608,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4598,8 +4621,7 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4623,8 +4645,7 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4637,7 +4658,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6
+              "duration": 5
             }
           },
           {
@@ -4661,7 +4682,8 @@
               "location": "features/step_definitions/importer.js:223"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4673,8 +4695,7 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4686,7 +4707,8 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4734,7 +4756,8 @@
               "location": "features/step_definitions/importer.js:269"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4853,7 +4876,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4865,7 +4889,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4877,7 +4902,8 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -4889,8 +4915,7 @@
               "location": "features/step_definitions/importer.js:127"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -4902,8 +4927,7 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -5014,8 +5038,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -5075,7 +5098,8 @@
               "location": "features/step_definitions/importer.js:273"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5168,7 +5192,8 @@
               "location": "features/step_definitions/importer.js:18"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5204,7 +5229,8 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5339,7 +5365,8 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5375,8 +5402,7 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -5424,8 +5450,7 @@
               "location": "features/step_definitions/importer.js:252"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -5461,7 +5486,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5473,7 +5499,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5597,8 +5624,7 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -5671,7 +5697,8 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           }
         ]
@@ -5803,7 +5830,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5815,7 +5843,8 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5888,8 +5917,7 @@
               "location": "features/step_definitions/importer.js:212"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -5901,7 +5929,8 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -5937,7 +5966,8 @@
               "location": "features/step_definitions/importer.js:248"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1
             }
           },
           {
@@ -6020,8 +6050,7 @@
               "location": "features/step_definitions/importer.js:57"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -6046,8 +6075,7 @@
               "location": "features/step_definitions/importer.js:63"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -6122,8 +6150,7 @@
               "location": "features/step_definitions/importer.js:127"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {
@@ -6147,8 +6174,7 @@
               "location": "features/step_definitions/importer.js:223"
             },
             "result": {
-              "status": "passed",
-              "duration": 1
+              "status": "passed"
             }
           },
           {

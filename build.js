@@ -953,9 +953,9 @@ class BaseProduct extends Product{
         }
       }
     });
-    if(selectedOptionStock === null ){
+    if(source === null ){
         return this.variations.reduce( ( t, v )=>{
-          t.incr( v.stockCount, `include product #${this.id}'s variation #${v.id}'s stockCount of` );
+          t.incr( parseInt(v.stockCount), `include product #${this.id}'s variation #${v.id}'s stockCount of` );
           return t;
         },new PedanticCount.LoggingCount( 0 ) );  
     }

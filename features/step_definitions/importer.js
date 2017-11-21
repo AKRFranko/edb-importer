@@ -99,7 +99,7 @@ defineSupportCode(function({Given, When, Then}) {
   
   Given('I select a quantity of {int}', function (int) {
     // console.log('QTY_SELECT', this)
-    return assert.ok( this.currentProduct.select( {qunatity: int } ) );
+    return assert.ok( this.currentProduct.select( {quantity: int } ) );
   });
   
   Then('the current product has a {string} of {string}', function (string, string2) {

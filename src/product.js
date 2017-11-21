@@ -287,10 +287,7 @@ Product.Variation = class{
       }else{
         return 0;
       }
-      
-      
     }
-    
     return countersMap.get( this ).getCount( 'stockCount', this.id );
   }
   

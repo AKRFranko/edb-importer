@@ -1286,9 +1286,9 @@ function (_Product) {
         }
       });
 
-      if (selectedOptionStock === null) {
+      if (source === null) {
         return this.variations.reduce(function (t, v) {
-          t.incr(v.stockCount, "include product #".concat(_this8.id, "'s variation #").concat(v.id, "'s stockCount of"));
+          t.incr(parseInt(v.stockCount), "include product #".concat(_this8.id, "'s variation #").concat(v.id, "'s stockCount of"));
           return t;
         }, new PedanticCount.LoggingCount(0));
       } // console.log( 'stockCount(BASE#%s)', this.id, selectedOptionStock, source.parent)
